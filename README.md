@@ -69,7 +69,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
 描述：为什么做，怎么做，结果如何，代表xx
 
-### 2. Visual Target Navigation
+### 3. Visual Target Navigation
 
 1. Navigation Evaluation
 
@@ -103,20 +103,27 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
       > 加上vlm，评测两个内容：1. clip选择的结果，2. VLM对不同K的表现
 
    2. conway  & room？多模态or单模态？
+      
+      单模态多模态
 
       1. 去掉vlm的我们的方法，纯评估graph：
 
-         clip conway top 3 --> expand to 9 --> clip obj top 1
+         clip conway top 3 --> expand to 9 --> clip obj top 1、
+         
+      2.去掉文本模态：
 
-      2. 去掉图像模态：
+         clip conway top 3 --> expand to 9 --> clip obj（only image） top 1
+
+      3. 去掉图像模态：
 
          clip conway top 3 --> expand to 9 --> clip obj（only text） top 1
-
-      3. conway 换成gt room
+      
+      
+      5. conway 换成gt room
 
          clip room label top 3 --> clip obj top 1
 
-      4. 去掉图像模态（论文baseline）
+      6. 去掉图像模态（论文baseline）
 
          clip room label top 3 --> clip obj（only text） top 1
 
