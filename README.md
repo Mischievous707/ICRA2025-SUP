@@ -126,6 +126,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
       6. 去掉图像模态（论文baseline）
 
          clip room label top 3 --> clip obj（only text） top 1
+3. 多任务task
 
       
 
