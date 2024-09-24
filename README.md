@@ -13,7 +13,7 @@ For visual target navigation tasks, a suitable environment representation plays 
 
 ## Video
 <video controls>
-  <source src="./CSTG_Final.mp4" type="video/mp4">
+  <source src=".CSTG_Final.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -61,10 +61,10 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 2. 如何对比（和competetive的xx方法对比）
 3. 结果：
 
-| dataset（） | scene | ConceptGraph | ours |
+| dataset | scene | ConceptGraph | ours |
 | ----------- | ----- | ------------ | ---- |
-|             |       |              |      |
-|             |       |              |      |
+|      _       |       |              |      |
+|       _      |       |              |      |
 
 分析：
 
