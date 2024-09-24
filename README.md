@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/637966af-dfbb-458e-bb6a-15ddcbc1a3d8
 
 <img src="/img/conwaygraph.png" />
 
-> 描述
+> 描述---换成gif
 
 <img src="/img/semantic.png" />
 
