@@ -1,7 +1,7 @@
 # CTSG: Context and Topology based Multi-Modal Scene Graph for Visual Target Navigation
 This repository is the official implementation of the paper: CTSG: Context and Topology based Multi-Modal Scene Graph for Visual Target Navigation[🔗](http://)
 
-<img src="C:\Users\Lynn\Desktop\我的\Typora\拓展\CSTG\img\intruduction.png" alt="github-pic"  />
+<img src=".\img\intruduction.png" alt="github-pic"  />
 
 > - [ ] **[L]** CTSG is a hierarchical 3D scene graph mapping method designed for visual object navigation. It features a dual-layer structure: an object layer and a novel *Conway* layer (short for *context* and *way* topology), composed of topological waypoints enriched with multi-modal context information.
 >
@@ -13,23 +13,23 @@ For visual target navigation tasks, a suitable environment representation plays 
 
 ## Video
 <video controls>
-  <source src="C:\Users\Lynn\Desktop\new1.mp4" type="video/mp4">
+  <source src="./CSTG_Final.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 ## Approach
 
-<img src="C:\Users\Lynn\Desktop\我的\Typora\拓展\CSTG\img\pipeline.png" />
+<img src="./img/pipeline.png" />
 
 > 描述-优势
 
 ### Scene Graph Construction
 
-<img src="C:\Users\Lynn\Desktop\我的\Typora\拓展\CSTG\img\conwaygraph.png" />
+<img src=".\img\conwaygraph.png" />
 
 > 描述
 
-<img src="C:\Users\Lynn\Desktop\我的\Typora\拓展\CSTG\img\semantic.png" />
+<img src="./img/semantic.png"/>
 
 > 描述
 
@@ -40,6 +40,14 @@ For visual target navigation tasks, a suitable environment representation plays 
 ## Experiment
 
 ### 1. Graph
+
+#### HM3D+Matterport3D评测表格
+
+The accuracy of the constructed scene graph is evaluated on the Matterport3D and HM3D datasets. GON represents the number of predicted objects in the scene graph, SON represents the number of objects in the real scene, and Accuracy indicates the percentage of correctly predicted objects in the scene graph. The evaluation details are as follows: the object categories and object coordinates in the scene graph are matched with the ground truth categories and coordinates. An object prediction in the scene graph is considered correct only if the category labels match and the distance between the object coordinates in the scene graph and the ground truth coordinates is less than a threshold (1 meter). Position Error represents the average distance error between the correctly predicted objects in the scene graph and the ground truth objects.
+
+To further demonstrate the accuracy of our proposed CSTG in constructing scene graphs, we include a comparative experiment with ConceptGraph. The experimental details are shown in the table.
+
+
 
 obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
