@@ -39,13 +39,51 @@ For visual target navigation tasks, a suitable environment representation plays 
 
 ## Experiment
 
+### Instance Segmentation Model Selection
+
+We evaluate our instance segmentation on the Replica dataset, following the same evaluation protocol as described in Conceptgraph. The segmentation performance of current models is compared using two metrics: Mean Accuracy (mAcc) and Frequency-weighted Intersection over Union (F-mIoU).
+
+> Segmentation Model Selection 表
+
+we report various semantic segmentation results on Replica dataset. The combination of the RAM and SAM series demonstrates a significant advantage over MaskCLIP and Mask2former. Although its performance metrics are slightly lower than those of fine-tuned models, the open-vocabulary segmentation model demonstrates a clear advantage in scene transferability. There is no significant performance difference between the SAM and SAM2 models, but SAM is more widely-used and adaptable to other models. Therefore, we selected the RAM+SAM combination for object segmentation in scenes.
+
+
 ### 1. Graph
 
 #### HM3D+Matterport3D评测表格
 
+> HM3D 评测表格
+
+| Scenes | GON/SON | Accuracy(%) | Position Error(m) |
+|:--------:|:---------:|:-------------:|:-------------------:|
+|BAbdmeyTvMZ | 63/370 | 57.14 | 0.2682 |
+|Dd4bFSTQ8gi | 344 / 392 | 53.49 |  0.2319 |
+|QaLdnwvtxbs& | 238 / 238| 42.72 | 0.2964 |
+|svBbv1Pavdk | 286 / 372 | 47.20 | 0.4720 |
+|:-----------:|:---------:|:-----:|:-----:|
+| mean        |           | 50.14 | 0.3171|
+|:-----------:|:---------:|:-----:|:-----:|
+
+> Matterport3D 评测表格
+| Scenes | GON/SON | Accuracy(%) | Position Error(m) |
+|:--------:|:---------:|:-------------:|:-------------------:|
+|2azQ1b91cZZ | 695 / 862 | 44.75 | 0.3096 |
+|EU6Fwq7SyZv | 295/438 | 52.63 | 0.3228 |
+|oLBMNvg9in8 | 483/770 | 52.59 | 0.2554 |
+|TbHJrupSAjP | 421/641 | 60.57 | 0.2833 |
+|x8F5xyUWy9e | 93/276 | 41.92 | 0.2725 |
+|Z6MFQCViBuw | 152/562 | 58.55 | 0.3184 | 
+|:----------:|:-------:|:------:|:-----:|
+| mean        |           | 52.91 | 0.2956|
+|:-----------:|:---------:|:-----:|:-----:|
+ 
+
+
 The accuracy of the constructed scene graph is evaluated on the Matterport3D and HM3D datasets. GON represents the number of predicted objects in the scene graph, SON represents the number of objects in the real scene, and Accuracy indicates the percentage of correctly predicted objects in the scene graph. The evaluation details are as follows: the object categories and object coordinates in the scene graph are matched with the ground truth categories and coordinates. An object prediction in the scene graph is considered correct only if the category labels match and the distance between the object coordinates in the scene graph and the ground truth coordinates is less than a threshold (1 meter). Position Error represents the average distance error between the correctly predicted objects in the scene graph and the ground truth objects.
 
-To further demonstrate the accuracy of our proposed CSTG in constructing scene graphs, we include a comparative experiment with ConceptGraph. The experimental details are shown in the table.
+To further demonstrate the accuracy of our proposed CSTG in constructing scene graphs, we include a comparative experiment with ConceptGraph. The experimental results are presented in the table.
+
+> conceptgraph 和 ours 在HM3D数据集上测评表
 
 
 
