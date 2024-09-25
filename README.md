@@ -140,3 +140,34 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 |    _       |                 |       |
 |       _    |                 |       |
 
+## Case Video
+### simulator
+
+https://github.com/user-attachments/assets/c5761339-6b3e-4c0f-892f-1bf5a3897af1
+
+https://github.com/user-attachments/assets/7a20ebef-11e3-460c-98e1-4839877f774c
+
+
+### real world
+
+https://github.com/user-attachments/assets/11c9cdd9-a8a4-4d2f-b04d-0a8ce47c30c2
+
+
+https://github.com/user-attachments/assets/0d52ced1-fd2a-4baa-8ef4-d3c330a63623
+
+
+https://github.com/user-attachments/assets/6c75d5e7-ffc9-4126-8a48-53cec5b4c53a
+
+
+https://github.com/user-attachments/assets/a06cba6f-cd94-4525-8f24-63e4a1705e29
+
+
+https://github.com/user-attachments/assets/0d572bbb-96c9-4697-a33b-6f80dedbf8e4
+
+
+https://github.com/user-attachments/assets/d2093569-524f-44cc-b505-ee049024a560
+
+
+https://github.com/user-attachments/assets/092d2cf4-3ba0-469b-8e83-c5b3536273a0
+
+
