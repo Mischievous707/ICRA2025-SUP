@@ -111,9 +111,9 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
          clip conway top 3 --> expand to 9 --> clip obj top 1、
 
-      2.去掉文本模态：
+      > 2.去掉文本模态：
 
-         clip conway top 3 --> expand to 9 --> clip obj（only image） top 1
+      >   clip conway top 3 --> expand to 9 --> clip obj（only image） top 1
 
       3. 去掉图像模态：
 
