@@ -103,7 +103,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
       >
       > 加上vlm，评测两个内容：1. clip选择的结果，2. VLM对不同K的表现
 
-   2. conway  & room？多模态or单模态？
+   2. conway  & room？多模态or单模态？在确定topk超参之后进行
       
       单模态多模态
 
