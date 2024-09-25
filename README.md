@@ -53,7 +53,7 @@ we report various semantic segmentation results on Replica dataset. The combinat
 #### HM3D+Matterport3D评测表格
 
 > HM3D and  Matterport3D 评测表格
-
+##### HM3D
 | Scenes | GON/SON | Accuracy(%) | Position Error(m) |
 |:--------:|:---------:|:-------------:|:-------------------:|
 |BAbdmeyTvMZ | 63/370 | 57.14 | 0.2682 |
@@ -62,6 +62,7 @@ we report various semantic segmentation results on Replica dataset. The combinat
 |svBbv1Pavdk | 286 / 372 | 47.20 | 0.4720 |
 | mean        |           | 50.14 | 0.3171|
 
+#### Matterport3D
 | Scenes | GON/SON | Accuracy(%) | Position Error(m) |
 |:--------:|:---------:|:-------------:|:-------------------:|
 |2azQ1b91cZZ | 695 / 862 | 44.75 | 0.3096 |
