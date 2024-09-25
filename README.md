@@ -60,9 +60,7 @@ we report various semantic segmentation results on Replica dataset. The combinat
 |Dd4bFSTQ8gi | 344 / 392 | 53.49 |  0.2319 |
 |QaLdnwvtxbs& | 238 / 238| 42.72 | 0.2964 |
 |svBbv1Pavdk | 286 / 372 | 47.20 | 0.4720 |
-|:-----------:|:---------:|:-----:|:-----:|
 | mean        |           | 50.14 | 0.3171|
-|:-----------:|:---------:|:-----:|:-----:|
 
 > Matterport3D 评测表格
 | Scenes | GON/SON | Accuracy(%) | Position Error(m) |
@@ -73,9 +71,7 @@ we report various semantic segmentation results on Replica dataset. The combinat
 |TbHJrupSAjP | 421/641 | 60.57 | 0.2833 |
 |x8F5xyUWy9e | 93/276 | 41.92 | 0.2725 |
 |Z6MFQCViBuw | 152/562 | 58.55 | 0.3184 | 
-|:----------:|:-------:|:------:|:-----:|
 | mean        |           | 52.91 | 0.2956|
-|:-----------:|:---------:|:-----:|:-----:|
  
 
 
