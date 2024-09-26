@@ -173,7 +173,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 >
 > Analysis of the results indicates that setting the k value to 3 or 5 can achieve a good balance between the retrieval accuracy of Conway and object nodes. However, when the k value is increased to 5, although the improvement in object accuracy is limited, the navigation accuracy decreases. Moreover, considering that our method invokes LVLMs, an increase in the k value leads to a 67% increase in the number of tokens input to the visual language model. Taking all factors into account, we have chosen a k value of 3 as the optimal solution.
 
-   2. conway  & room？多模态or单模态？在确定topk超参之后进行
+   2. The effectiveness of multimodal graphs and Conway layers
    
    | Method        | Modal       | Top1  | Top3  | Top5  |
    |:-------------:|:-----------:|:-----:|:-----:|:-----:|
