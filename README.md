@@ -184,7 +184,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
    | Conway-Object | Image Only  |       |       |       |
    |               | Text Only   |       |       |       |
 
-<!-- 单模态多模态 1. 去掉vlm的我们的方法，纯评估graph： clip conway top 3 --> expand to 9 --> clip obj top 1 2.去掉文本模态：clip conway top 3 --> expand to 9 --> clip obj（only image） top 1 3. 去掉图像模态： clip conway top 3 --> expand to 9 --> clip obj（only text） top 1 5. conway 换成gt room clip room label top 3 --> clip obj top 1 6. 去掉图像模态（论文baseline）clip room label top 3 --> clip obj（only text） top 1 -->
+<!-- 单模态多模态 1. 去掉vlm的我们的方法，纯评估graph： clip conway top 3 -> expand to 9 -> clip obj top 1 2.去掉文本模态：clip conway top 3 -> expand to 9 -> clip obj（only image） top 1 3. 去掉图像模态： clip conway top 3 -> expand to 9 -> clip obj（only text） top 1 5. conway 换成gt room clip room label top 3 -> clip obj top 1 6. 去掉图像模态（论文baseline）clip room label top 3 -> clip obj（only text） top 1 -->
          
 ### 4. 多任务task
 
