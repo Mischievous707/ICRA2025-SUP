@@ -40,7 +40,7 @@ https://github.com/user-attachments/assets/637966af-dfbb-458e-bb6a-15ddcbc1a3d8
 ## Experiment
 
 [parameter_list](#section-heading)
-
+<!--
 ### 1. Dataset
 
 1. scene data
@@ -52,8 +52,8 @@ https://github.com/user-attachments/assets/637966af-dfbb-458e-bb6a-15ddcbc1a3d8
 2. task data
 
    HM3D
-
-### 2. Scene Graph 
+-->
+### 1. Scene Graph 
 #### Instance Segmentation Model Selection
 
 We evaluate our instance segmentation on the Replica dataset, following the same evaluation protocol as described in Conceptgraph. The segmentation performance of current models is compared using two metrics: Mean Accuracy (mAcc) and Frequency-weighted Intersection over Union (F-mIoU).
@@ -120,7 +120,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
 描述：为什么做，怎么做，结果如何，代表xx
 
-### 3. Visual Target Navigation
+### 2. Visual Target Navigation
 
 1. Navigation Evaluation
  <!--
@@ -151,7 +151,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 >
 >  Furthermore, we compared our navigation results with the publicly available state-of-the-art method, IEVE, on our evaluation dataset. Although the IEVE algorithm slightly outperforms ours in navigation performance, it relies on a training process to optimize model parameters. In contrast, our method employs a training-free strategy, aiming to assess its generalization capability by directly applying the model to new scenes, thereby providing a more flexible solution in practical applications.
 
-2. Retrieval Evaluation
+### 3. Retrieval Evaluation
 
    去掉VLM不确定因素
 
@@ -198,7 +198,8 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
       6. 去掉图像模态（论文baseline）
 
          clip room label top 3 --> clip obj（only text） top 1
-3. 多任务task
+         
+### 4. 多任务task
 
       
 
