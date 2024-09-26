@@ -174,29 +174,17 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 > Analysis of the results indicates that setting the k value to 3 or 5 can achieve a good balance between the retrieval accuracy of Conway and object nodes. However, when the k value is increased to 5, although the improvement in object accuracy is limited, the navigation accuracy decreases. Moreover, considering that our method invokes LVLMs, an increase in the k value leads to a 67% increase in the number of tokens input to the visual language model. Taking all factors into account, we have chosen a k value of 3 as the optimal solution.
 
    2. conway  & room？多模态or单模态？在确定topk超参之后进行
-      
-      单模态多模态
+   
+   | Method        | Modal       | Top1  | Top3  | Top5  |
+   |:-------------:|:-----------:|:-----:|:-----:|:-----:|
+   |               | Multi-Modal | 7.53  | 14.93 | 19.07 |
+   | Room-Object   | Image Only  | 4.26  | 14.28 | 17.29 |
+   |               | Text Only   | 4.35  | 13    | 15.38 |
+   |               | Multi-Modal |       |       |       |
+   | Conway-Object | Image Only  |       |       |       |
+   |               | Text Only   |       |       |       |
 
-      1. 去掉vlm的我们的方法，纯评估graph：
-
-         clip conway top 3 --> expand to 9 --> clip obj top 1
-
-      2.去掉文本模态：
-
-         clip conway top 3 --> expand to 9 --> clip obj（only image） top 1
-
-      3. 去掉图像模态：
-
-         clip conway top 3 --> expand to 9 --> clip obj（only text） top 1
-      
-      
-      5. conway 换成gt room
-
-         clip room label top 3 --> clip obj top 1
-
-      6. 去掉图像模态（论文baseline）
-
-         clip room label top 3 --> clip obj（only text） top 1
+<!-- 单模态多模态 1. 去掉vlm的我们的方法，纯评估graph： clip conway top 3 --> expand to 9 --> clip obj top 1 2.去掉文本模态：clip conway top 3 --> expand to 9 --> clip obj（only image） top 1 3. 去掉图像模态： clip conway top 3 --> expand to 9 --> clip obj（only text） top 1 5. conway 换成gt room clip room label top 3 --> clip obj top 1 6. 去掉图像模态（论文baseline）clip room label top 3 --> clip obj（only text） top 1 -->
          
 ### 4. 多任务task
 
