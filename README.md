@@ -79,6 +79,22 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
    ​	1. with/without：在原本的基础上去掉conway检索=只对所有object列表做clip+vlm
 
    > 2. room cluster：在原本的基础上把conway换成room（聚类得到，有图文），其他不变
+   
+   | scene / SR  |     IEVE  | Object Only | Ours    |
+   |:-------------:|:-------------:|:-------------:|:---------:|
+   | Dd4bFSTQ8gi | 33.6      | 24.00       | 41.33   |
+   | QaLdnwvtxbs | 66.4       | 48.15       | 44.44   |
+   | VBzV5z6i1WS | 44.8       | 34.38       | 48.96   |
+   | ziup5kvtCCR | 45.6       | 43.59       | 33.33   |
+   | Nfvxx8J5NCo | 35.2       | 25.64       | 41.03   |
+   | svBbv1Pavdk | 57.6       | 17.54       | 47.37   |
+   | BAbdmeyTvMZ | 60.8       | 39.40       | 42.42   |
+   | mv2HUxq3B53 | 37.6       | 40.00       | 22.67   |
+   | mean       | 47.9       | 34.09      | 40.19   |
+
+
+   <!--实验设置：首先，我们构建了一个基线模型，该模型直接在场景中所有检测到的物体实例列表中搜索目标实例, 找到目标实例后，利用导航图规划路径完成任务。然而，这种扁平化的检索方法仅关注物体本身而忽略了其周围环境的上下文信息时，它只能在较远的距离上才能准确地识别出目标物体，导致了导航成功率的下降。此外，我们将自己的导航结果与公开可用的最先进方法IEVE在我们的评估数据集上进行了比较，尽管IEVE算法在导航性能上略胜一筹，但其依赖于训练过程以优化模型参数。相比之下，我们的方法采用无需训练的策略，旨在通过直接应用模型于新场景来评估其泛化能力，从而在实际应用中提供更灵活的解决方案。-->
+   Initially, we constructed a baseline model that directly searches for the target instance within the list of all detected object instances in the scene. Once the target instance is identified, a navigation graph is utilized to plan a path and complete the task. However, this flattened retrieval method, which focuses solely on the object itself and neglects the contextual information of its surrounding environment, can only accurately recognize the target object at a greater distance, leading to a decrease in navigation success rates. Furthermore, we compared our navigation results with the publicly available state-of-the-art method, IEVE, on our evaluation dataset. Although the IEVE algorithm slightly outperforms ours in navigation performance, it relies on a training process to optimize model parameters. In contrast, our method employs a training-free strategy, aiming to assess its generalization capability by directly applying the model to new scenes, thereby providing a more flexible solution in practical applications.
 
 2. Retrieval Evaluation
 
