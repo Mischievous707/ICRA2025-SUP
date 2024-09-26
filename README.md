@@ -208,7 +208,6 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
       |VBzV5z6i1WS  |6.15      |     16.66     |18.75    |
       |ziup5kvtCCR  | 0        |     0     | 2.56     |
       |mean         | 4.35     |     13.00     | 15.38  |
-         clip room label top 3 --> clip obj（only text） top 1
 3. 多任务task
 
       
