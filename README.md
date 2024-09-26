@@ -191,7 +191,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 >
 > Further analysis revealed that under identical experimental configurations, the conway-object graph outperformed the room-object graph in retrieval performance. This finding fully confirms the significant advantages of the multimodal conway-object scene graph we proposed in retrieval tasks.
          
-### 4. 多任务task
+<!--### 4. 多任务task-->
 
       
 
@@ -200,7 +200,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
 | Subsystem | Hyperparameters | Value |
 | --------- | --------------- | ----- |
-|     _      |                 |       |
+|     _      |                |       |
 |    _       |                 |       |
 |       _    |                 |       |
 
