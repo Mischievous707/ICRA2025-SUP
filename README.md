@@ -27,7 +27,7 @@ For visual target navigation tasks, a suitable environment representation plays 
 
 <img src=".\img\conwaygraph.png" />
 
-> 描述
+> 描述---换成gif
 
 <img src="./img/semantic.png"/>
 
@@ -49,6 +49,24 @@ we report various semantic segmentation results on Replica dataset. The combinat
 
 
 ### 1. Graph
+
+
+obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
+[parameter_list](#section-heading)
+
+### 1. Dataset
+
+1. scene data
+
+   HM3D
+
+   （Matterport 3D）
+
+2. task data
+
+   HM3D
+
+### 2. Scene Graph 
 
 #### HM3D+Matterport3D评测表格
 
@@ -83,28 +101,124 @@ To further demonstrate the accuracy of our proposed CSTG in constructing scene g
 
 
 
-obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
+obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测 
 
 1. gt从habitat-sim如何获取
 2. 如何对比（和competetive的xx方法对比）
 3. 结果：
 
-|              |      |      |
-| ------------ | ---- | ---- |
-| ConceptGraph |      |      |
-| ours         |      |      |
+| dataset | scene | ConceptGraph | ours |
+| ----------- | ----- | ------------ | ---- |
+|      _       |       |              |      |
+|       _      |       |              |      |
 
 分析：
 
+描述：为什么做，怎么做，结果如何，代表xx
+
+### 3. Visual Target Navigation
+
+1. Navigation Evaluation
+
+   conway整体方法（包括构图、检索）有效性
+
+   ​	1. with/without：在原本的基础上去掉conway检索=只对所有object列表做clip+vlm
+
+   > 2. room cluster：在原本的基础上把conway换成room（聚类得到，有图文），其他不变
+
+2. Retrieval Evaluation
+
+   去掉VLM不确定因素
+
+   1. Top K Accuracy
+
+      为了找到最好的K
+
+      去掉VLM不确定因素，探讨clip结果的precision
+
+      选出最合适的K
+
+      👇
+
+      | layer/Top K acc | K=1  | K=3  | K=5  |
+      | --------------- | ---- | ---- | ---- |
+      | conway          |      |      |      |
+      | object          |      |      |      |
+
+      > 或者
+      >
+      > 加上vlm，评测两个内容：1. clip选择的结果，2. VLM对不同K的表现
+
+   2. conway  & room？多模态or单模态？
+      
+      单模态多模态
+
+      1. 去掉vlm的我们的方法，纯评估graph：
+
+         clip conway top 3 --> expand to 9 --> clip obj top 1、
+         
+      2.去掉文本模态：
+
+         clip conway top 3 --> expand to 9 --> clip obj（only image） top 1
+
+      3. 去掉图像模态：
+
+         clip conway top 3 --> expand to 9 --> clip obj（only text） top 1
+      
+      4. conway 换成gt room
+
+         clip room label top 3 --> clip obj top 1
+
+      | scanes name | sr(top1) | sr(top3) | sr(top5) |
+      |:-----------:|:--------:|:--------:|:--------:|
+      |BAbdmeyTvMZ  |  9.09    |     24.24      |24.24    |
+      |Dd4bFSTQ8gi  | 9.33     |    14.67       |16        |
+      |mv2HUxq3B53  | 16       |     18.67      |25.33     |
+      |Nfvxx8J5NCo  | 0        |      0     |5.13      |
+      |QaLdnwvtxbs  |18.52     |      44.44     |51.85     |
+      |svBbv1Pavdk  | 0        |      1.75     |3.51      |
+      |VBzV5z6i1WS  |7.29      |       15.63    |23.96    |
+      |ziup5kvtCCR  | 0        |       0      |2.56     |
+      | mean        | 7.53     |        14.925     |19.07     |  
+
+      5. 去掉文本模态（论文baseline）
+
+      | scanes name | sr(top1) | sr(top3) | sr(top5) |
+      |:-----------:|:--------:|:--------:|:--------:|
+      |BAbdmeyTvMZ  |  9.09    |     24.24     |30.3     |
+      |Dd4bFSTQ8gi  | 6.67     |    12      |14.67     |
+      |mv2HUxq3B53  | 0        |    2.67      |8         |
+      |Nfvxx8J5NCo  | 2.56     |      7.69    |7.69      |
+      |QaLdnwvtxbs  |7.41      |     33.33     |48.14     |
+      |svBbv1Pavdk  | 0        |      17.54    |3.51      |
+      |VBzV5z6i1WS  |8.33      |      19.79    | 26.04    |
+      |ziup5kvtCCR  | 0        |       0   | 0        |
+      | mean        |4.26      |       14.28   | 17.29    |
+
+      6. 去掉图像模态（论文baseline）
+
+       | scanes name | sr(top1)|  sr(top3)    | sr(top5)|
+      |:-----------:|:--------:|:--------:|:--------:|
+      |BAbdmeyTvMZ  |  0       |    21.21      |24.24    |
+      |Dd4bFSTQ8gi  | 4        |     10.67     |12        |
+      |mv2HUxq3B53  | 16       |     22.67     |26.67     |
+      |Nfvxx8J5NCo  | 5.12     |   7.69       |7.69      |
+      |QaLdnwvtxbs  |0         |    15.82      |25.93     |
+      |svBbv1Pavdk  | 3.51     |      5.26    |5.26      |
+      |VBzV5z6i1WS  |6.15      |     16.66     |18.75    |
+      |ziup5kvtCCR  | 0        |     0     | 2.56     |
+      |mean         | 4.35     |     13.00     | 15.38  |
+         clip room label top 3 --> clip obj（only text） top 1
+3. 多任务task
+
+      
 
 
-
-
-## 参数表
+## 参数表<a name="section-heading"></a>
 
 | Subsystem | Hyperparameters | Value |
 | --------- | --------------- | ----- |
-|           |                 |       |
-|           |                 |       |
-|           |                 |       |
+|     _      |                 |       |
+|    _       |                 |       |
+|       _    |                 |       |
 
