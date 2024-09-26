@@ -130,10 +130,9 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
    > 2. room cluster：在原本的基础上把conway换成room（聚类得到，有图文），其他不变
    -->
-   
- | Scene        | Navigation |          |             |     |       |          |
+
+|    Scene     | IEVE       |          | Object Only |     | Ours  |          |
 |:------------:|:----------:|:--------:|:-----------:|:---:|:-----:|:--------:|
-|              | IEVE       |          | Object Only |     | Ours  |          |
 |              | sr(%)      | spl      | sr(%)       | spl | sr(%) | spl      |
 | Dd4bFSTQ8gi  | 33.6       | 0.0753   | 24.00       |     | 41.33 |  0.6029  |
 | QaLdnwvtxbs  | 66.4       |  0.2681  | 48.15       |     | 44.44 |  0.7471  |
