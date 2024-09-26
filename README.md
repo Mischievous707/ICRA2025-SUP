@@ -58,7 +58,17 @@ https://github.com/user-attachments/assets/637966af-dfbb-458e-bb6a-15ddcbc1a3d8
 
 We evaluate our instance segmentation on the Replica dataset, following the same evaluation protocol as described in Conceptgraph. The segmentation performance of current models is compared using two metrics: Mean Accuracy (mAcc) and Frequency-weighted Intersection over Union (F-mIoU).
 
-> Segmentation Model Selection 表
+| Models      | Type      | mAcc  | F-mIOU |
+|:-----------:|:---------:|:-----:|:------:|
+| CLIPSeg     |           | 28.21 | 39.84  |
+| LSeg        | Fine Tune | 33.39 | 51.54  |
+| OpenSeg     |           | 41.19 | 53.74  |
+| MaskCLIP    |           | 4.53  | 0.94   |
+| Mask2former | Zero Shot | 10.42 | 13.11  |
+| RAM + SAM   |           | 34.19 | 37.27  |
+| RAM + SAM2  |           | 35.80 | 38.35  |
+
+
 
 > we report various semantic segmentation results on Replica dataset. The combination of the RAM and SAM series demonstrates a significant advantage over MaskCLIP and Mask2former. Although its performance metrics are slightly lower than those of fine-tuned models, the open-vocabulary segmentation model demonstrates a clear advantage in scene transferability. There is no significant performance difference between the SAM and SAM2 models, but SAM is more widely-used and adaptable to other models. Therefore, we selected the RAM+SAM combination for object segmentation in scenes.
 
