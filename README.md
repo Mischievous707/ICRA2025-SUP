@@ -1,10 +1,7 @@
-# CTSG: Context and Topology based Multi-Modal Scene Graph for Visual Target Navigation
-This repository is the official implementation of the paper: CTSG: Context and Topology based Multi-Modal Scene Graph for Visual Target Navigation[🔗](http://)
+# CTSG
+This repository is the official implementation of the paper: CTSG: Context and Topology based Multi-Modal Scene Graph for Visual Target Navigation <!--[🔗](http://)-->
 
-<img src="/img/intruduction.png" alt="github-pic"  />
-
-> - [ ] **[L]** CTSG is a hierarchical 3D scene graph mapping method designed for visual object navigation. It features a dual-layer structure: an object layer and a novel *Conway* layer (short for *context* and *way* topology), composed of topological waypoints enriched with multi-modal context information.
->
+![屏幕截图 2024-09-26 120312](https://github.com/user-attachments/assets/54d4b915-feff-4cb0-919d-7e9cbd406640)
 
 > https://github.com/user-attachments/assets/ff1d11a1-2961-4fb1-8d08-ae9c999f9cda
 
