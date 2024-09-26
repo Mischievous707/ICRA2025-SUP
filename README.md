@@ -185,6 +185,11 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
    |               | Text Only   |       |       |       |
 
 <!-- 单模态多模态 1. 去掉vlm的我们的方法，纯评估graph： clip conway top 3 -> expand to 9 -> clip obj top 1 2.去掉文本模态：clip conway top 3 -> expand to 9 -> clip obj（only image） top 1 3. 去掉图像模态： clip conway top 3 -> expand to 9 -> clip obj（only text） top 1 5. conway 换成gt room clip room label top 3 -> clip obj top 1 6. 去掉图像模态（论文baseline）clip room label top 3 -> clip obj（only text） top 1 -->
+<!--实验设置：我们对room-object和conway-object两种不同的形式的graph, 在相同实验设置下做对比，实验结果如上表。首先，我们可以观察到，不论是room-object形式还是conway-object形式的场景graph，增加节点上的模态信息可以提升物体检索的准确率。其次，在相同实验配置下，conway-object形式的graph比room-object形式的graph检索的结果要好的多。这个实验充分证明了我们提出的多模态conway-obj场景图的优势。-->
+
+> We compared the performance of two different graph structures—the room-object and conway-object graphs—under uniform experimental conditions. The results of the experiment are detailed in the aforementioned table. Preliminary observations indicate that regardless of whether the room-object or conway-object graph form is utilized, augmenting the nodes with multimodal information significantly enhances the accuracy of object retrieval.
+>
+> Further analysis revealed that under identical experimental configurations, the conway-object graph outperformed the room-object graph in retrieval performance. This finding fully confirms the significant advantages of the multimodal conway-object scene graph we proposed in retrieval tasks.
          
 ### 4. 多任务task
 
