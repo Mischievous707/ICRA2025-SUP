@@ -1,11 +1,7 @@
 # CTSG: Context and Topology based Multi-Modal Scene Graph for Visual Target Navigation
 This repository is the official implementation of the paper: CTSG: Context and Topology based Multi-Modal Scene Graph for Visual Target Navigation <!--[🔗](http://)-->
 
-<<<<<<< HEAD
-![屏幕截图 2024-09-26 221652](https://github.com/user-attachments/assets/fbad25d8-99fc-4d05-a02e-0d933f31120c)
-=======
 <img src=".\img\intruduction.png" alt="github-pic"  />
->>>>>>> graph_location
 
 > https://github.com/user-attachments/assets/ff1d11a1-2961-4fb1-8d08-ae9c999f9cda
 
