@@ -156,12 +156,50 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
       1. 去掉vlm的我们的方法，纯评估graph：
 
          clip conway top 3 --> expand to 9 --> clip obj top 1、
+
+         | scanes name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+         |:------------:|:---------:|:---------:|:---------:|
+         | BAbdmeyTvMZ | 15.15     | 24.24     | 33.33     |
+         | Dd4bFSTQ8gi  | 33.33     | 58.67     | 68        |
+         | mv2HUxq3B53  | 17.33     | 32        | 33.33     |
+         | Nfvxx8J5NCo  | 15.38     | 35.90     | 46.15     |
+         | QaLdnwvtxbs  | 55.56     | 70.37     | 74.07     |
+         | svBbv1Pavdk  | 28.07     | 45.61     | 63.16     |
+         | VBzV5z6i1WS  | 31.25     | 53.13     | 66.67     |
+         | ziup5kvtCCR  | 35.90     | 69.23     | 76.92     |
+         | mean         | 29        | 48.64     | 57.70     |
          
       2.去掉文本模态：
+
+      | scanes name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+      |:------------:|:---------:|:---------:|:---------:|
+      | BAbdmeyTvMZ  | 9.09      | 15.15     | 21.21     |
+      | Dd4bFSTQ8gi  | 29.33     | 52        | 58.67     |
+      | mv2HUxq3B53  | 10.67     | 26.67     | 34.67     |
+      | Nfvxx8J5NCo  | 15.38     | 25.64     | 30.77     |
+      | QaLdnwvtxbs  | 62.96     | 77.78     | 81.48     |
+      | svBbv1Pavdk  | 14.04     | 29.82     | 52.63     |
+      | VBzV5z6i1WS  | 30.21     | 48.96     | 54.17     |
+      | ziup5kvtCCR  | 43.59     | 61.54     | 71.79     |
+      | mean         | 26.90     | 42.20     | 50.67     |
+         
 
          clip conway top 3 --> expand to 9 --> clip obj（only image） top 1
 
       3. 去掉图像模态：
+
+      | scanes name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+      |:------------:|:---------:|:---------:|:---------:|
+      | BAbdmeyTvMZ  | 21.21     | 39.39     | 42.42     |
+      | Dd4bFSTQ8gi  | 28        | 60        | 72        |
+      | mv2HUxq3B53  | 25.33     | 38.67     | 48        |
+      | Nfvxx8J5NCo  | 33.33     | 51.28     | 56.41     |
+      | QaLdnwvtxbs  | 44.44     | 74.07     | 74.07     |
+      | svBbv1Pavdk  | 28.07     | 52.63     | 70.18     |
+      | VBzV5z6i1WS  | 21.88     | 52.08     | 61.46     |
+      | ziup5kvtCCR  | 58.97     | 74.36     | 82.05     |
+      | mean         | 32.65     | 55.31     | 63.32     |
+         
 
          clip conway top 3 --> expand to 9 --> clip obj（only text） top 1
       
@@ -169,45 +207,48 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
          clip room label top 3 --> clip obj top 1
 
-      | scanes name | sr(top1) | sr(top3) | sr(top5) |
-      |:-----------:|:--------:|:--------:|:--------:|
-      |BAbdmeyTvMZ  |  9.09    |     24.24      |24.24    |
-      |Dd4bFSTQ8gi  | 9.33     |    14.67       |16        |
-      |mv2HUxq3B53  | 16       |     18.67      |25.33     |
-      |Nfvxx8J5NCo  | 0        |      0     |5.13      |
-      |QaLdnwvtxbs  |18.52     |      44.44     |51.85     |
-      |svBbv1Pavdk  | 0        |      1.75     |3.51      |
-      |VBzV5z6i1WS  |7.29      |       15.63    |23.96    |
-      |ziup5kvtCCR  | 0        |       0      |2.56     |
-      | mean        | 7.53     |        14.925     |19.07     |  
+         | scanes name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+         |:------------:|:---------:|:---------:|:---------:|
+         | BAbdmeyTvMZ  | 21.21     | 33.33     | 39.40     |
+         | Dd4bFSTQ8gi  | 20        | 34.67     | 46.67     |
+         | mv2HUxq3B53  | 36        | 56        | 72        |
+         | Nfvxx8J5NCo  | 25.61     | 51.28     | 66.67     |
+         | QaLdnwvtxbs  | 59.26     | 92.59     | 92.59     |
+         | svBbv1Pavdk  | 22.81     | 28.07     | 33.33     |
+         | VBzV5z6i1WS  | 22.91     | 46.88     | 56.25     |
+         | ziup5kvtCCR  | 38.46     | 53.85     | 61.54     |
+         | mean         | 30.78     | 49.58     | 58.56     |
+
 
       5. 去掉文本模态（论文baseline）
 
-      | scanes name | sr(top1) | sr(top3) | sr(top5) |
-      |:-----------:|:--------:|:--------:|:--------:|
-      |BAbdmeyTvMZ  |  9.09    |     24.24     |30.3     |
-      |Dd4bFSTQ8gi  | 6.67     |    12      |14.67     |
-      |mv2HUxq3B53  | 0        |    2.67      |8         |
-      |Nfvxx8J5NCo  | 2.56     |      7.69    |7.69      |
-      |QaLdnwvtxbs  |7.41      |     33.33     |48.14     |
-      |svBbv1Pavdk  | 0        |      17.54    |3.51      |
-      |VBzV5z6i1WS  |8.33      |      19.79    | 26.04    |
-      |ziup5kvtCCR  | 0        |       0   | 0        |
-      | mean        |4.26      |       14.28   | 17.29    |
+         | scanes name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+         |:------------:|:---------:|:---------:|:---------:|
+         | BAbdmeyTvMZ  | 18.18     | 24.24     | 39.39     |
+         | Dd4bFSTQ8gi  | 13.33     | 36        | 46.67     |
+         | mv2HUxq3B53  | 13.33     | 32        | 40        |
+         | Nfvxx8J5NCo  | 25.64     | 48.72     | 48.72     |
+         | QaLdnwvtxbs  | 62.96     | 81.48     | 91.3      |
+         | svBbv1Pavdk  | 15.79     | 22.81     | 31.58     |
+         | VBzV5z6i1WS  | 19.79     | 36.46     | 52.08     |
+         | ziup5kvtCCR  | 23.08     | 48.72     | 56.41     |
+         | mean         | 24.01     | 41.30     | 50.77     |
 
       6. 去掉图像模态（论文baseline）
 
-       | scanes name | sr(top1)|  sr(top3)    | sr(top5)|
-      |:-----------:|:--------:|:--------:|:--------:|
-      |BAbdmeyTvMZ  |  0       |    21.21      |24.24    |
-      |Dd4bFSTQ8gi  | 4        |     10.67     |12        |
-      |mv2HUxq3B53  | 16       |     22.67     |26.67     |
-      |Nfvxx8J5NCo  | 5.12     |   7.69       |7.69      |
-      |QaLdnwvtxbs  |0         |    15.82      |25.93     |
-      |svBbv1Pavdk  | 3.51     |      5.26    |5.26      |
-      |VBzV5z6i1WS  |6.15      |     16.66     |18.75    |
-      |ziup5kvtCCR  | 0        |     0     | 2.56     |
-      |mean         | 4.35     |     13.00     | 15.38  |
+         | scanes name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+         |:------------:|:---------:|:---------:|:---------:|
+         | BAbdmeyTvMZ  | 15.15     | 33.33     | 45.45     |
+         | Dd4bFSTQ8gi  | 20        | 44        | 54.67     |
+         | mv2HUxq3B53  | 26.67     | 56        | 60        |
+         | Nfvxx8J5NCo  | 33.33     | 64.10     | 74.36     |
+         | QaLdnwvtxbs  | 40.74     | 88.89     | 96.30     |
+         | svBbv1Pavdk  | 28.07     | 36.84     | 45.61     |
+         | VBzV5z6i1WS  | 32.29     | 57.29     | 64.58     |
+         | ziup5kvtCCR  | 30.77     | 48.72     | 71.79     |
+         | mean         | 28.38     | 53.65     | 64.1      |
+
+
 3. 多任务task
 
       
