@@ -139,6 +139,9 @@ Visual target navigation is accomplished by reaching the target in query image f
    #### Graph Location
    
    ##### HM3D
+
+   <div style="text-align: center;">
+      
    | Scenes | GON/SON | Accuracy(%) | Position Error(m) |
    |:--------:|:---------:|:-------------:|:-------------------:|
    |BAbdmeyTvMZ | 63/370 | 57.14 | 0.2682 |
@@ -146,7 +149,11 @@ Visual target navigation is accomplished by reaching the target in query image f
    |QaLdnwvtxbs& | 238 / 238| 42.72 | 0.2964 |
    |svBbv1Pavdk | 286 / 372 | 47.20 | 0.4720 |
    | mean        |           | 50.14 | 0.3171|
+      
+   </div>
    
+   <div style="text-align: center;">
+      
    #### Matterport3D
    | Scenes | GON/SON | Accuracy(%) | Position Error(m) |
    |:--------:|:---------:|:-------------:|:-------------------:|
@@ -157,7 +164,8 @@ Visual target navigation is accomplished by reaching the target in query image f
    |x8F5xyUWy9e | 93/276 | 41.92 | 0.2725 |
    |Z6MFQCViBuw | 152/562 | 58.55 | 0.3184 | 
    | mean        |           | 52.91 | 0.2956|
-    
+   
+   </div>
    
 The accuracy of the constructed scene graph is evaluated on the Matterport3D and HM3D datasets. GON represents the number of predicted objects in the scene graph, SON represents the number of objects in the real scene, and Accuracy indicates the percentage of correctly predicted objects in the scene graph. The evaluation details are as follows: the object categories and object coordinates in the scene graph are matched with the ground truth categories and coordinates. An object prediction in the scene graph is considered correct only if the category labels match and the distance between the object coordinates in the scene graph and the ground truth coordinates is less than a threshold (1 meter). Position Error represents the average distance error between the correctly predicted objects in the scene graph and the ground truth objects.
    
