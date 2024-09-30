@@ -158,8 +158,8 @@ Visual target navigation is accomplished by reaching the target in query image f
 The accuracy of the constructed scene graph is evaluated on the Matterport3D and HM3D datasets. GON represents the number of predicted objects in the scene graph, SON represents the number of objects in the real scene, and Accuracy indicates the percentage of correctly predicted objects in the scene graph. The evaluation details are as follows: the object categories and object coordinates in the scene graph are matched with the ground truth categories and coordinates. An object prediction in the scene graph is considered correct only if the category labels match and the distance between the object coordinates in the scene graph and the ground truth coordinates is less than a threshold (1 meter). Position Error represents the average distance error between the correctly predicted objects in the scene graph and the ground truth objects.
    
 To further demonstrate the accuracy of our proposed CSTG in constructing scene graphs, we include a comparative experiment with ConceptGraph. The experimental results are presented in the table.
-
-
+> todo conceptgraph
+<!--
 
 obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测 
 
@@ -175,7 +175,7 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 分析：
 
 描述：为什么做，怎么做，结果如何，代表xx
-
+-->
 
 
 ### 2. Visual Target Navigation
