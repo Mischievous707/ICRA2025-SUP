@@ -28,6 +28,8 @@ The object layer includes object nodes, with attributes like individual descript
 
 Based on our CSTG, we develop an efficient dual-level retrieval strategy for visual target navigation, which leverages VLMs to interpret semantic information and enrich representations. 
 We conduct conway-level and object-level retrieval, coupled with a backtracking search to ensure robustness.
+
+<!--
 ### Scene Graph Construction
 
 <img src="/img/conwaygraph.png" />
@@ -109,8 +111,9 @@ Once a specific object node is located, the path planning module uses the corres
 This path is represented as a sequence of conway nodes coordinates.
 Visual target navigation is accomplished by reaching the target in query image following the computed path.
 
+-->
 
-## Experiment
+## Experiment & Analysis
 
 [parameter_list](#section-heading)
 <!--
@@ -126,24 +129,7 @@ Visual target navigation is accomplished by reaching the target in query image f
 
    HM3D
 -->
-### 1. Scene Graph 
-#### Instance Segmentation Model Selection
-
-We evaluate our instance segmentation on the Replica dataset, following the same evaluation protocol as described in Conceptgraph. The segmentation performance of current models is compared using two metrics: Mean Accuracy (mAcc) and Frequency-weighted Intersection over Union (F-mIoU).
-
-| Models      | Type      | mAcc  | F-mIOU |
-|:-----------:|:---------:|:-----:|:------:|
-| CLIPSeg     |           | 28.21 | 39.84  |
-| LSeg        | Fine Tune | 33.39 | 51.54  |
-| OpenSeg     |           | 41.19 | 53.74  |
-| MaskCLIP    |           | 4.53  | 0.94   |
-| Mask2former | Zero Shot | 10.42 | 13.11  |
-| RAM + SAM   |           | 34.19 | 37.27  |
-| RAM + SAM2  |           | 35.80 | 38.35  |
-
-
-
-> we report various semantic segmentation results on Replica dataset. The combination of the RAM and SAM series demonstrates a significant advantage over MaskCLIP and Mask2former. Although its performance metrics are slightly lower than those of fine-tuned models, the open-vocabulary segmentation model demonstrates a clear advantage in scene transferability. There is no significant performance difference between the SAM and SAM2 models, but SAM is more widely-used and adaptable to other models. Therefore, we selected the RAM+SAM combination for object segmentation in scenes.
+### [TODO: 艳平修改标题，加总起句介绍评测了什么+为什么评测（我们的优势）+实验结果+分析]1. Scene Graph 
 
 
    #### Graph Location
@@ -310,6 +296,24 @@ The results are detailed in the table above.
 |    _       |                 |       |
 |       _    |                 |       |
 
+## Appendix
+### Instance Segmentation Model Selection
+
+We evaluate our instance segmentation on the Replica dataset, following the same evaluation protocol as described in Conceptgraph. The segmentation performance of current models is compared using two metrics: Mean Accuracy (mAcc) and Frequency-weighted Intersection over Union (F-mIoU).
+
+| Models      | Type      | mAcc  | F-mIOU |
+|:-----------:|:---------:|:-----:|:------:|
+| CLIPSeg     |           | 28.21 | 39.84  |
+| LSeg        | Fine Tune | 33.39 | 51.54  |
+| OpenSeg     |           | 41.19 | 53.74  |
+| MaskCLIP    |           | 4.53  | 0.94   |
+| Mask2former | Zero Shot | 10.42 | 13.11  |
+| RAM + SAM   |           | 34.19 | 37.27  |
+| RAM + SAM2  |           | 35.80 | 38.35  |
+
+> todo:重写分析
+
+> we report various semantic segmentation results on Replica dataset. The combination of the RAM and SAM series demonstrates a significant advantage over MaskCLIP and Mask2former. Although its performance metrics are slightly lower than those of fine-tuned models, the open-vocabulary segmentation model demonstrates a clear advantage in scene transferability. There is no significant performance difference between the SAM and SAM2 models, but SAM is more widely-used and adaptable to other models. Therefore, we selected the RAM+SAM combination for object segmentation in scenes.
 
 
 
