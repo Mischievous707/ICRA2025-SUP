@@ -30,7 +30,7 @@ We conduct Conway-level and object-level retrieval, coupled with a backtracking 
 
 ## Experiment & Analysis
 We evaluated and analyzed our approach from several aspects: the accuracy of graph construction, the practical effectiveness of visual target navigation, and the role of graph information in retrieval tasks.
-[parameter_list](#section-heading)
+<!--[parameter_list](#section-heading)-->
 
 ### 1. Scene Graph Evaluation [TODO: 加总起句介绍评测了什么+为什么评测（我们的优势）+实验结果+分析（加上conceptgraph）] 
 ？如何合理引入conceptgraph：常见构建方法
@@ -69,11 +69,7 @@ To further demonstrate the accuracy of our proposed CSTG in constructing scene g
 
 ### 2. Visual Target Navigation
 
-We compared our navigation results with the state-of-the-art IEVE method on our evaluation dataset. 
 
-While IEVE relies on a training process to optimize model parameters, our method uses a training-free approach, aiming to evaluate its generalization ability by directly applying the model to new environments, offering a more flexible solution for real-world applications, also demonstrating competitive performance.
-
-To verify the practical impact of the Conway layer in the navigation task, we performed Visual Target Navigation using only the object layer, resulting in a 6.1% drop in performance, highlighting the critical role of the Conway layer in the task.
  <!--
  检索时间
  -->
@@ -94,7 +90,11 @@ To verify the practical impact of the Conway layer in the navigation task, we pe
 | Mean        | 47.9  | 0.1823 | 40.19 | 0.6365 | 34.09                 | 0.6265 |
 
 </div>
+We compared our navigation results with the state-of-the-art IEVE method on our evaluation dataset. 
 
+While IEVE relies on a training process to optimize model parameters, our method uses a training-free approach, aiming to evaluate its generalization ability by directly applying the model to new environments, offering a more flexible solution for real-world applications, also demonstrating competitive performance.
+
+To verify the practical impact of the Conway layer in the navigation task, we performed Visual Target Navigation using only the object layer, resulting in a 6.1% drop in performance, highlighting the critical role of the Conway layer in the task.
 
 
 ### 3. Retrieval Strategy Evaluation
@@ -102,11 +102,11 @@ To verify the practical impact of the Conway layer in the navigation task, we pe
 To eliminate inherent uncertainties, we removed all modules related to Large Visual and Language Models (LVLMs). This allowed us to accurately assess the retrieval performance of our scene graph, with all node selections based solely on CLIP similarity decisions.
 
 
-1. The Effectiveness of Top-k Selection on Conway Layer Retrieval
+**1. The Effectiveness of Top-k Selection on Conway Layer Retrieval**
 
 <div style="text-align: center;">
 
-##### Nodes Retrieval Accuracy
+** Nodes Retrieval Accuracy**
 | scene name   | TOP1       |         | TOP3  |         | TOP5  |         | TOP7  |         |
 |--------------|------------|---------|------------|---------|------------|---------|------------|---------|
 |              | Conway acc | obj acc | Conway acc | obj acc | Conway acc | obj acc | Conway acc | obj acc |
@@ -130,7 +130,7 @@ Taking all factors into account, we have selected a k-value of 3 as the optimal 
 
 
 
-2. The Effectiveness of Conway Information and Multimodal Information in Scene Graphs
+**2. The Effectiveness of Conway Information and Multimodal Information in Scene Graphs**
    
 **Object Nodes Retrieval Accuracy**
 |             |             | Room-Object |           |             | Conway-Object |           |
