@@ -25,7 +25,7 @@ https://github.com/user-attachments/assets/637966af-dfbb-458e-bb6a-15ddcbc1a3d8
 The connections between Conway nodes represent their navigability. 
 The object layer includes object nodes, with attributes like individual descriptions and object images, and the connections between Conway and object nodes reflect spatial relationships.
 
-Based on our CSTG, we develop an efficient dual-level retrieval strategy for visual target navigation, which leverages VLMs to interpret semantic information and enrich representations. 
+Based on our CTSG, we develop an efficient dual-level retrieval strategy for visual target navigation, which leverages VLMs to interpret semantic information and enrich representations. 
 We conduct Conway-level and object-level retrieval, coupled with a backtracking search to ensure robustness.
 
 
@@ -65,7 +65,7 @@ We evaluated and analyzed our approach from several aspects: the accuracy of gra
 
 The accuracy of the constructed scene graph is evaluated on the Matterport3D and HM3D datasets. GON represents the number of predicted objects in the scene graph, SON represents the number of objects in the real scene, and Accuracy indicates the percentage of correctly predicted objects in the scene graph. The evaluation details are as follows: the object categories and object coordinates in the scene graph are matched with the ground truth categories and coordinates. An object prediction in the scene graph is considered correct only if the category labels match and the distance between the object coordinates in the scene graph and the ground truth coordinates is less than a threshold (1 meter). Position Error represents the average distance error between the correctly predicted objects in the scene graph and the ground truth objects.
    
-To further demonstrate the accuracy of our proposed CSTG in constructing scene graphs, we include a comparative experiment with ConceptGraph. The experimental results are presented in the table.
+To further demonstrate the accuracy of our proposed CTSG in constructing scene graphs, we include a comparative experiment with ConceptGraph. The experimental results are presented in the table.
 
 
 ### 2. Visual Target Navigation
