@@ -241,7 +241,7 @@ For inherented uncertainties elimination, we removed all Large Visual and Langua
 <div style="text-align: center;">
 
 ##### Nodes Retrieval Accuracy
-| scene name   | TOP1       |         | acc(TOP3)  |         | acc(TOP5)  |         | acc(TOP7)  |         |
+| scene name   | TOP1       |         | TOP3  |         | TOP5  |         | TOP7  |         |
 |--------------|------------|---------|------------|---------|------------|---------|------------|---------|
 |              | conway acc | obj acc | conway acc | obj acc | conway acc | obj acc | conway acc | obj acc |
 | BAbdmeyTvMZ. | 48.48      | 15.15   | 57.58      | 15.15   | 66.67      | 18.18   | 72.73      | 15.15   |
@@ -265,104 +265,20 @@ Considering all factors, we have chosen a k-value of 3 as the optimal solution.
 
 
    #### 2. The Effectiveness of Multimodal Information in Scene Graphs
+   
+|             |             | Room-Object |           |             | Conway-Object |           |
+|-------------|-------------|-------------|-----------|-------------|---------------|-----------|
+| Scene Names | Multi-Modal | Image Only  | Text Only | Multi-Modal | Image Only    | Text Only |
+| BAbdmeyTvMZ | 21.21       | 18.18       | 15.15     | 15.15       | 9.09          | 21.21     |
+| Dd4bFSTQ8gi | 20          | 13.33       | 20        | 33.33       | 29.33         | 28        |
+| mv2HUxq3B53 | 36          | 13.33       | 26.67     | 17.33       | 10.67         | 25.33     |
+| Nfvxx8J5NCo | 25.61       | 25.64       | 33.33     | 15.38       | 15.38         | 33.33     |
+| QaLdnwvtxbs | 59.26       | 62.96       | 40.74     | 55.56       | 62.96         | 44.44     |
+| svBbv1Pavdk | 22.81       | 15.79       | 28.07     | 28.07       | 14.04         | 28.07     |
+| VBzV5z6i1WS | 22.91       | 19.79       | 32.29     | 31.25       | 30.21         | 21.88     |
+| ziup5kvtCCR | 38.46       | 23.08       | 30.77     | 35.90       | 43.59         | 58.97     |
+| Mean        | 30.78       | 24.01       | 28.38     | 29          | 26.90         | 32.65     |
 
-   <!--
-   | Method        | Modal       | Top1  | Top3  | Top5  |
-   |:-------------:|:-----------:|:-----:|:-----:|:-----:|
-   |               | Multi-Modal | 7.53  | 14.93 | 19.07 |
-   | Room-Object   | Image Only  | 4.26  | 14.28 | 17.29 |
-   |               | Text Only   | 4.35  | 13    | 15.38 |
-   |               | Multi-Modal |       |       |       |
-   | Conway-Object | Image Only  |       |       |       |
-   |               | Text Only   |       |       |       |
-   -->
-
-   1. 去掉vlm的我们的方法，纯评估graph：
-
-      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-      |:------------:|:---------:|:---------:|:---------:|
-      | BAbdmeyTvMZ | 15.15     | 24.24     | 33.33     |
-      | Dd4bFSTQ8gi  | 33.33     | 58.67     | 68        |
-      | mv2HUxq3B53  | 17.33     | 32        | 33.33     |
-      | Nfvxx8J5NCo  | 15.38     | 35.90     | 46.15     |
-      | QaLdnwvtxbs  | 55.56     | 70.37     | 74.07     |
-      | svBbv1Pavdk  | 28.07     | 45.61     | 63.16     |
-      | VBzV5z6i1WS  | 31.25     | 53.13     | 66.67     |
-      | ziup5kvtCCR  | 35.90     | 69.23     | 76.92     |
-      | mean         | 29        | 48.64     | 57.70     |
-         
-   2. 图像模态：
-
-      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-      |:------------:|:---------:|:---------:|:---------:|
-      | BAbdmeyTvMZ  | 9.09      | 15.15     | 21.21     |
-      | Dd4bFSTQ8gi  | 29.33     | 52        | 58.67     |
-      | mv2HUxq3B53  | 10.67     | 26.67     | 34.67     |
-      | Nfvxx8J5NCo  | 15.38     | 25.64     | 30.77     |
-      | QaLdnwvtxbs  | 62.96     | 77.78     | 81.48     |
-      | svBbv1Pavdk  | 14.04     | 29.82     | 52.63     |
-      | VBzV5z6i1WS  | 30.21     | 48.96     | 54.17     |
-      | ziup5kvtCCR  | 43.59     | 61.54     | 71.79     |
-      | mean         | 26.90     | 42.20     | 50.67     |
-
-   3. 文本模态
-
-      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-      |:------------:|:---------:|:---------:|:---------:|
-      | BAbdmeyTvMZ  | 21.21     | 39.39     | 42.42     |
-      | Dd4bFSTQ8gi  | 28        | 60        | 72        |
-      | mv2HUxq3B53  | 25.33     | 38.67     | 48        |
-      | Nfvxx8J5NCo  | 33.33     | 51.28     | 56.41     |
-      | QaLdnwvtxbs  | 44.44     | 74.07     | 74.07     |
-      | svBbv1Pavdk  | 28.07     | 52.63     | 70.18     |
-      | VBzV5z6i1WS  | 21.88     | 52.08     | 61.46     |
-      | ziup5kvtCCR  | 58.97     | 74.36     | 82.05     |
-      | mean         | 32.65     | 55.31     | 63.32     |
-         
-
-      
-   4. conway 换成gt room
-
-      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-      |:------------:|:---------:|:---------:|:---------:|
-      | BAbdmeyTvMZ  | 21.21     | 33.33     | 39.40     |
-      | Dd4bFSTQ8gi  | 20        | 34.67     | 46.67     |
-      | mv2HUxq3B53  | 36        | 56        | 72        |
-      | Nfvxx8J5NCo  | 25.61     | 51.28     | 66.67     |
-      | QaLdnwvtxbs  | 59.26     | 92.59     | 92.59     |
-      | svBbv1Pavdk  | 22.81     | 28.07     | 33.33     |
-      | VBzV5z6i1WS  | 22.91     | 46.88     | 56.25     |
-      | ziup5kvtCCR  | 38.46     | 53.85     | 61.54     |
-      | mean         | 30.78     | 49.58     | 58.56     |
-
-
-   5. 图像模态
-
-      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-      |:------------:|:---------:|:---------:|:---------:|
-      | BAbdmeyTvMZ  | 18.18     | 24.24     | 39.39     |
-      | Dd4bFSTQ8gi  | 13.33     | 36        | 46.67     |
-      | mv2HUxq3B53  | 13.33     | 32        | 40        |
-      | Nfvxx8J5NCo  | 25.64     | 48.72     | 48.72     |
-      | QaLdnwvtxbs  | 62.96     | 81.48     | 91.3      |
-      | svBbv1Pavdk  | 15.79     | 22.81     | 31.58     |
-      | VBzV5z6i1WS  | 19.79     | 36.46     | 52.08     |
-      | ziup5kvtCCR  | 23.08     | 48.72     | 56.41     |
-      | mean         | 24.01     | 41.30     | 50.77     |
-
-   6. 文本模态
-
-      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-      |:------------:|:---------:|:---------:|:---------:|
-      | BAbdmeyTvMZ  | 15.15     | 33.33     | 45.45     |
-      | Dd4bFSTQ8gi  | 20        | 44        | 54.67     |
-      | mv2HUxq3B53  | 26.67     | 56        | 60        |
-      | Nfvxx8J5NCo  | 33.33     | 64.10     | 74.36     |
-      | QaLdnwvtxbs  | 40.74     | 88.89     | 96.30     |
-      | svBbv1Pavdk  | 28.07     | 36.84     | 45.61     |
-      | VBzV5z6i1WS  | 32.29     | 57.29     | 64.58     |
-      | ziup5kvtCCR  | 30.77     | 48.72     | 71.79     |
-      | mean         | 28.38     | 53.65     | 64.1      |
 
 <!-- 单模态多模态 1. 去掉vlm的我们的方法，纯评估graph： clip conway top 3 -> expand to 9 -> clip obj top 1 2.去掉文本模态：clip conway top 3 -> expand to 9 -> clip obj（only image） top 1 3. 去掉图像模态： clip conway top 3 -> expand to 9 -> clip obj（only text） top 1 5. conway 换成gt room clip room label top 3 -> clip obj top 1 6. 去掉图像模态（论文baseline）clip room label top 3 -> clip obj（only text） top 1 -->
 <!--实验设置：我们对room-object和conway-object两种不同的形式的graph, 在相同实验设置下做对比，实验结果如上表。首先，我们可以观察到，不论是room-object形式还是conway-object形式的场景graph，增加节点上的模态信息可以提升物体检索的准确率。其次，在相同实验配置下，conway-object形式的graph比room-object形式的graph检索的结果要好的多。这个实验充分证明了我们提出的多模态conway-obj场景图的优势。-->
