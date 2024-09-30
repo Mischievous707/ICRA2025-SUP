@@ -129,8 +129,8 @@ Visual target navigation is accomplished by reaching the target in query image f
 
    HM3D
 -->
-### [TODO: 艳平修改标题，加总起句介绍评测了什么+为什么评测（我们的优势）+实验结果+分析]1. Scene Graph 
-
+### [TODO: 艳平修改标题，加总起句介绍评测了什么+为什么评测（我们的优势）+实验结果+分析（加上conceptgraph）]1. Scene Graph 
+？如何合理引入conceptgraph：常见构建方法
 
    #### Graph Location
    
@@ -161,8 +161,6 @@ To further demonstrate the accuracy of our proposed CSTG in constructing scene g
 
 
 
-
-
 obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测 
 
 1. gt从habitat-sim如何获取
@@ -178,11 +176,10 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
 描述：为什么做，怎么做，结果如何，代表xx
 
-> todo: 实验待完成f
+
 
 ### 2. Visual Target Navigation
 
-1. Navigation Evaluation
  <!--
    conway整体方法（包括构图、检索）有效性
 
@@ -190,6 +187,8 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
    > 2. room cluster：在原本的基础上把conway换成room（聚类得到，有图文），其他不变
    -->
+
+<div style="text-align: center;">
 
 |    Scene     | IEVE       |          | Object Only |     | Ours  |          |
 |:------------:|:----------:|:--------:|:-----------:|:---:|:-----:|:--------:|
@@ -204,24 +203,19 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 | mv2HUxq3B53  | 37.6       |  0.1208  | 40.00       |  0.6248   | 22.67 |  0.6423  |
 | Mean         | 47.9       |  0.1823  | 34.09       |    0.6265  | 40.19 |  0.6365  |
 
-
-
-
-   <!--实验设置：首先，我们构建了一个基线模型，该模型直接在场景中所有检测到的物体实例列表中搜索目标实例, 找到目标实例后，利用导航图规划路径完成任务。然而，这种扁平化的检索方法仅关注物体本身而忽略了其周围环境的上下文信息时，它只能在较远的距离上才能准确地识别出目标物体，导致了导航成功率的下降。此外，我们将自己的导航结果与公开可用的最先进方法IEVE在我们的评估数据集上进行了比较，尽管IEVE算法在导航性能上略胜一筹，但其依赖于训练过程以优化模型参数。相比之下，我们的方法采用无需训练的策略，旨在通过直接应用模型于新场景来评估其泛化能力，从而在实际应用中提供更灵活的解决方案。-->
-
-<!--
-> Initially, we constructed a baseline model that directly searches for the target instance within the list of all detected object instances in the scene. Once the target instance is identified, a navigation graph is utilized to plan a path and complete the task. However, this flattened retrieval method, which focuses solely on the object itself and neglects the contextual information of its surrounding environment, can only accurately recognize the target object at a greater distance, leading to a decrease in navigation success rates.
->
->  Furthermore, we compared our navigation results with the publicly available state-of-the-art method, IEVE, on our evaluation dataset. Although the IEVE algorithm slightly outperforms ours in navigation performance, it relies on a training process to optimize model parameters. In contrast, our method employs a training-free strategy, aiming to assess its generalization capability by directly applying the model to new scenes, thereby providing a more flexible solution in practical applications.
--->
+</div>
 
 Initially, we built a object-baseline model that directly searches for the target instance from the list of all detected object instances in the scene. After identifying the target, a navigation graph is used to plan the path and complete the task. However, this flat retrieval approach, which focuses only on the object itself and ignores the surrounding context, limits accurate recognition of the target object to longer distances, reducing navigation success rates.
 
 We also compared our navigation results with the state-of-the-art IEVE method on our evaluation dataset. While IEVE slightly outperforms our method in navigation performance, it relies on a training process to optimize model parameters. In contrast, our method uses a training-free approach, aiming to evaluate its generalization ability by directly applying the model to new environments, offering a more flexible solution for real-world applications.
 
-### 3. Retrieval Evaluation
+### 3. Retrieval Strategy Evaluation
 
-We designed a model to eliminate uncertainties inherent in Large Visual and Language Models (LVLMs) to precisely evaluate the retrieval performance of our scene graph, basing all node selections on CLIP similarity decisions. During the model's construction, we removed all LVLM-related modules.
+<!--
+We designed a model to eliminate uncertainties inherent in Large Visual and Language Models (LVLMs) to precisely evaluate the retrieval performance of our scene graph, basing all node selections just on CLIP similarity decisions. During the model's construction, we removed all LVLM-related modules.
+-->
+
+We removed all Large Visual and Language Models (LVLMs) related modules during model's construction for elimination inherented uncertainties in order to precisely evaluate the retrieval performance of our scene graph, basing all node selections just on CLIP similarity decisions. 
 
 > todo：和我们方法效果上的比较
 
