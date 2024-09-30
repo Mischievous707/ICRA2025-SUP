@@ -114,7 +114,7 @@ Visual target navigation is accomplished by reaching the target in query image f
 -->
 
 ## Experiment & Analysis
-
+我们从几个方面对我们的方法进行了评测与分析：
 [parameter_list](#section-heading)
 <!--
 ### 1. Dataset
@@ -208,6 +208,8 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 Initially, we built a object-baseline model that directly searches for the target instance from the list of all detected object instances in the scene. After identifying the target, a navigation graph is used to plan the path and complete the task. However, this flat retrieval approach, which focuses only on the object itself and ignores the surrounding context, limits accurate recognition of the target object to longer distances, reducing navigation success rates.
 
 We also compared our navigation results with the state-of-the-art IEVE method on our evaluation dataset. While IEVE slightly outperforms our method in navigation performance, it relies on a training process to optimize model parameters. In contrast, our method uses a training-free approach, aiming to evaluate its generalization ability by directly applying the model to new environments, offering a more flexible solution for real-world applications.
+> todo double check
+
 
 ### 3. Retrieval Strategy Evaluation
 
@@ -245,7 +247,7 @@ We removed all Large Visual and Language Models (LVLMs) related modules during m
 For Conway nodes selection, we used a strategy where the CLIP features of candidate Conway nodes' attached object nodes were matched with the CLIP features of the target object image to identify the most similar object node. The Conway node linked to this object node was then chosen as the navigation point for path planning. The experimental results are shown in the table above.
 
 -->
-
+在检索过程中，第一轮conway node检索的节点候选数量会影响xxxxxxxxx
 Result analysis indicates that setting the k-value to 3 or 5 achieves a good balance between retrieval accuracy for Conway and object nodes. However, when the k-value set up to 5, while the object accuracy sees limited improvement, navigation accuracy also declines. 
 Additionally, since our method invokes LVLMs, increasing the k-value leads to a 67% rise in the number of tokens input to the visual language model. 
 
