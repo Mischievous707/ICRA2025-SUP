@@ -3,10 +3,10 @@ This repository is the official implementation of the paper: **CTSG: Context and
 
 ![屏幕截图 2024-09-26 221652](https://github.com/user-attachments/assets/fbad25d8-99fc-4d05-a02e-0d933f31120c)
 
-> https://github.com/user-attachments/assets/ff1d11a1-2961-4fb1-8d08-ae9c999f9cda
+https://github.com/user-attachments/assets/ff1d11a1-2961-4fb1-8d08-ae9c999f9cda
 
-> https://github.com/user-attachments/assets/20362768-7054-4c69-925a-1913e1fb4b35
->
+https://github.com/user-attachments/assets/20362768-7054-4c69-925a-1913e1fb4b35
+
 <!--
 ## Abstract
 For visual target navigation tasks, a suitable environment representation plays a vital part in robot system to complete the navigation tasks. 3D Scene Graphs serve as sparse representations that excel at representing environments efficiently compare to dense semantic maps. Typical Scene Graphs are generally constructed based on multi-level semantic labels with hierarchical structures, which may lead to the loss of valuable spatial information, such as spatial topological relations, common sense understanding and visual context information. In this work, we propose **CTSG**, a Hierarchical 3D scene graph mapping approach for visual object navigation. Our graph adopts a dual-layer structure. Besides object layer, a novel conway (short for context information and way topology) layer is introduced, which consists of topological waypoints with rich multi-modal context information. We demonstrate the effectiveness of our method in novel visual target navigation tasks through simulation and real-world experiments across varied environments and instructions.
@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/637966af-dfbb-458e-bb6a-15ddcbc1a3d8
 
 > todo：有需要再补充
 
-CTSG is a dual-layer multi-modal scene graph. The conway layer contains navigable waypoints called conway nodes, which provide contextual information and multi-modal attributes like images and descriptions. 
+**CTSG** is a dual-layer multi-modal scene graph. The conway layer contains navigable waypoints called conway nodes, which provide contextual information and multi-modal attributes as images and descriptions. 
 The connections between conway nodes represent their navigability. 
 The object layer includes object nodes, with attributes like individual descriptions and object images, and the connections between conway and object nodes reflect spatial relationships.
 
@@ -238,15 +238,86 @@ We removed all Large Visual and Language Models (LVLMs) related modules during m
    -->
 <div style="text-align: center;">
 
-| K-Selection  |  Top 1  |  Top 3  |  Top 5  |  Top 7  |
-|:------------:|:-------:|:-------:|:-------:|:-------:|
-| Conway Acc   |  49.09  |  47.69  |  46.93  |  44.64  |
-| Object Acc   |  27.03  |  29.00  |  31.21  |  30.01  |
+##### Conway Nodes Retrieval Accuracy
+
+| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) | acc(TOP7) |
+|--------------|-----------|-----------|-----------|-----------|
+| BAbdmeyTvMZ. | 48.48     | 57.58     | 66.67     | 72.73     |
+| Dd4bFSTQ8gi  | 77.33     | 89.33     | 93.33     | 97.33     |
+| mv2HUxq3B53  | 41.33     | 56        | 68        | 77.33     |
+| Nfvxx8J5NCo  | 46.15     | 61.53     | 87.18     | 87.18     |
+| QaLdnwvtxbs  | 77.78     | 88.89     | 88.89     | 96.30     |
+| svBbv1Pavdk  | 77.19     | 91.23     | 91.23     | 98.98     |
+| VBzV5z6i1WS  | 59.38     | 88.54     | 92.71     | 94.79     |
+| ziup5kvtCCR  | 71.79     | 87.18     | 89.74     | 92.31     |
+| **mean**     | 62.43     | 77.54     | 84.72     | 89.62     |
+
+##### Object Retrieval Accuracy
+
+1. TOP1 Selection of Conway Layer Retrieval
+
+| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+|--------------|-----------|-----------|-----------|
+| BAbdmeyTvMZ. | 15.15     | 18.18     | 18.18     |
+| Dd4bFSTQ8gi  | 25.33     | 57.33     | 65.33     |
+| mv2HUxq3B53  | 12        | 21.33     | 30.67     |
+| Nfvxx8J5NCo  | 20.51     | 33.33     | 33.33     |
+| QaLdnwvtxbs  | 51.85     | 62.96     | 66.67     |
+| svBbv1Pavdk  | 26.32     | 40.35     | 49.12     |
+| VBzV5z6i1WS  | 29.17     | 47.92     | 51.04     |
+| ziup5kvtCCR  | 35.90     | 64.10     | 66.67     |
+| mean         | 27.03     | 43.19     | 47.63     |
+
+
+2. TOP3 Selection of Conway Layer Retrieval
+
+| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+|--------------|-----------|-----------|-----------|
+| BAbdmeyTvMZ. | 15.15     | 24.24     | 33.33     |
+| Dd4bFSTQ8gi  | 33.33     | 58.67     | 68        |
+| mv2HUxq3B53  | 17.33     | 32        | 33.33     |
+| Nfvxx8J5NCo  | 15.38     | 35.90     | 46.15     |
+| QaLdnwvtxbs  | 55.56     | 70.37     | 74.07     |
+| svBbv1Pavdk  | 28.07     | 45.61     | 63.16     |
+| VBzV5z6i1WS  | 31.25     | 53.13     | 66.67     |
+| ziup5kvtCCR  | 35.90     | 69.23     | 76.92     |
+| mean         | 29        | 48.64     | 57.70     |
+
+3. TOP5 Selection of Conway Layer Retrieval
+
+| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+|--------------|-----------|-----------|-----------|
+| BAbdmeyTvMZ. | 18.18     | 27.27     | 45.45     |
+| Dd4bFSTQ8gi  | 36        | 58.67     | 66.67     |
+| mv2HUxq3B53  | 25.33     | 40        | 45.33     |
+| Nfvxx8J5NCo  | 23.08     | 51.28     | 61.54     |
+| QaLdnwvtxbs  | 51.85     | 74.07     | 74.07     |
+| svBbv1Pavdk  | 28.07     | 42.11     | 56.14     |
+| VBzV5z6i1WS  | 31.25     | 55.21     | 66.67     |
+| ziup5kvtCCR  | 35.90     | 66.67     | 71.79     |
+| mean         | 31.21     | 51.91     | 60.96     |
+
+4. TOP7 Selection of Conway Layer Retrieval
+
+| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+|--------------|-----------|-----------|-----------|
+| BAbdmeyTvMZ. | 15.15     | 30.30     | 48.48     |
+| Dd4bFSTQ8gi  | 36        | 58.67     | 66.67     |
+| mv2HUxq3B53  | 25.33     | 42.67     | 48        |
+| Nfvxx8J5NCo  | 15.38     | 48.72     | 61.54     |
+| QaLdnwvtxbs  | 59.26     | 77.78     | 85.19     |
+| svBbv1Pavdk  | 22.81     | 42.11     | 54.39     |
+| VBzV5z6i1WS  | 30.21     | 52.08     | 62.5      |
+| ziup5kvtCCR  | 35.90     | 66.67     | 74.36     |
+| mean         | 30.01     | 52.38     | 62.64     |
 
 </div>	
+
    <!-- 实验设置：本研究设计了一种模型，该模型排除了大型视觉语言模型（LVLM）中的不确定性因素，所有节点的选择均基于CLIP相似度进行决策。在构建模型时，我们移除了与所有LVAM相关的模块。在Conway节点的选择上，我们采用了一种策略：将所有候选Conway节点下挂载的物体节点的CLIP特征与目标物体图片的CLIP特征进行相似度匹配，选择最相似的物体节点，将其连接的Conway节点作为导航点以规划路径。实验结果如上表所示。
    分析结果表明，当k值设定为3或5时，可以较好地平衡Conway和物体的检索正确率。然而，当k值增至5时，虽然物体准确率的提升有限，但导航准确率却有所下降。此外，考虑到我们的方法会调用LVLM，k值的增大会导致输入到视觉语言模型的token数量增加67%。综合考虑，我们选择k值为3作为最优解-->
+
 <!--
+
 > For the selection of Conway nodes, we adopted a strategy where we matched the CLIP features of all candidate Conway nodes' attached object nodes with the CLIP features of the target object image to find the most similar object node. The Conway node connected to this object node was then used as the navigation point to plan the path. The experimental results are shown in the table above.
 >
 > Analysis of the results indicates that setting the k value to 3 or 5 can achieve a good balance between the retrieval accuracy of Conway and object nodes. However, when the k value is increased to 5, although the improvement in object accuracy is limited, the navigation accuracy decreases. Moreover, considering that our method invokes LVLMs, an increase in the k value leads to a 67% increase in the number of tokens input to the visual language model. Taking all factors into account, we have chosen a k value of 3 as the optimal solution.
@@ -254,6 +325,7 @@ We removed all Large Visual and Language Models (LVLMs) related modules during m
 For Conway nodes selection, we used a strategy where the CLIP features of candidate Conway nodes' attached object nodes were matched with the CLIP features of the target object image to identify the most similar object node. The Conway node linked to this object node was then chosen as the navigation point for path planning. The experimental results are shown in the table above.
 
 -->
+
 在检索过程中，第一轮conway node检索的节点候选数量会影响xxxxxxxxx
 Result analysis indicates that setting the k-value to 3 or 5 achieves a good balance between retrieval accuracy for Conway and object nodes. However, when the k-value set up to 5, while the object accuracy sees limited improvement, navigation accuracy also declines. 
 Additionally, since our method invokes LVLMs, increasing the k-value leads to a 67% rise in the number of tokens input to the visual language model. 
@@ -261,8 +333,10 @@ Additionally, since our method invokes LVLMs, increasing the k-value leads to a 
 Considering all factors, we have chosen a k-value of 3 as the optimal solution.
 
 
+
    #### 2. The Effectiveness of Multimodal Information in Scene Graphs
-   
+
+   <!--
    | Method        | Modal       | Top1  | Top3  | Top5  |
    |:-------------:|:-----------:|:-----:|:-----:|:-----:|
    |               | Multi-Modal | 7.53  | 14.93 | 19.07 |
@@ -271,6 +345,94 @@ Considering all factors, we have chosen a k-value of 3 as the optimal solution.
    |               | Multi-Modal |       |       |       |
    | Conway-Object | Image Only  |       |       |       |
    |               | Text Only   |       |       |       |
+   -->
+
+   1. 去掉vlm的我们的方法，纯评估graph：
+
+      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+      |:------------:|:---------:|:---------:|:---------:|
+      | BAbdmeyTvMZ | 15.15     | 24.24     | 33.33     |
+      | Dd4bFSTQ8gi  | 33.33     | 58.67     | 68        |
+      | mv2HUxq3B53  | 17.33     | 32        | 33.33     |
+      | Nfvxx8J5NCo  | 15.38     | 35.90     | 46.15     |
+      | QaLdnwvtxbs  | 55.56     | 70.37     | 74.07     |
+      | svBbv1Pavdk  | 28.07     | 45.61     | 63.16     |
+      | VBzV5z6i1WS  | 31.25     | 53.13     | 66.67     |
+      | ziup5kvtCCR  | 35.90     | 69.23     | 76.92     |
+      | mean         | 29        | 48.64     | 57.70     |
+         
+   2. 图像模态：
+
+      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+      |:------------:|:---------:|:---------:|:---------:|
+      | BAbdmeyTvMZ  | 9.09      | 15.15     | 21.21     |
+      | Dd4bFSTQ8gi  | 29.33     | 52        | 58.67     |
+      | mv2HUxq3B53  | 10.67     | 26.67     | 34.67     |
+      | Nfvxx8J5NCo  | 15.38     | 25.64     | 30.77     |
+      | QaLdnwvtxbs  | 62.96     | 77.78     | 81.48     |
+      | svBbv1Pavdk  | 14.04     | 29.82     | 52.63     |
+      | VBzV5z6i1WS  | 30.21     | 48.96     | 54.17     |
+      | ziup5kvtCCR  | 43.59     | 61.54     | 71.79     |
+      | mean         | 26.90     | 42.20     | 50.67     |
+
+   3. 文本模态
+
+      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+      |:------------:|:---------:|:---------:|:---------:|
+      | BAbdmeyTvMZ  | 21.21     | 39.39     | 42.42     |
+      | Dd4bFSTQ8gi  | 28        | 60        | 72        |
+      | mv2HUxq3B53  | 25.33     | 38.67     | 48        |
+      | Nfvxx8J5NCo  | 33.33     | 51.28     | 56.41     |
+      | QaLdnwvtxbs  | 44.44     | 74.07     | 74.07     |
+      | svBbv1Pavdk  | 28.07     | 52.63     | 70.18     |
+      | VBzV5z6i1WS  | 21.88     | 52.08     | 61.46     |
+      | ziup5kvtCCR  | 58.97     | 74.36     | 82.05     |
+      | mean         | 32.65     | 55.31     | 63.32     |
+         
+
+      
+   4. conway 换成gt room
+
+      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+      |:------------:|:---------:|:---------:|:---------:|
+      | BAbdmeyTvMZ  | 21.21     | 33.33     | 39.40     |
+      | Dd4bFSTQ8gi  | 20        | 34.67     | 46.67     |
+      | mv2HUxq3B53  | 36        | 56        | 72        |
+      | Nfvxx8J5NCo  | 25.61     | 51.28     | 66.67     |
+      | QaLdnwvtxbs  | 59.26     | 92.59     | 92.59     |
+      | svBbv1Pavdk  | 22.81     | 28.07     | 33.33     |
+      | VBzV5z6i1WS  | 22.91     | 46.88     | 56.25     |
+      | ziup5kvtCCR  | 38.46     | 53.85     | 61.54     |
+      | mean         | 30.78     | 49.58     | 58.56     |
+
+
+   5. 图像模态
+
+      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+      |:------------:|:---------:|:---------:|:---------:|
+      | BAbdmeyTvMZ  | 18.18     | 24.24     | 39.39     |
+      | Dd4bFSTQ8gi  | 13.33     | 36        | 46.67     |
+      | mv2HUxq3B53  | 13.33     | 32        | 40        |
+      | Nfvxx8J5NCo  | 25.64     | 48.72     | 48.72     |
+      | QaLdnwvtxbs  | 62.96     | 81.48     | 91.3      |
+      | svBbv1Pavdk  | 15.79     | 22.81     | 31.58     |
+      | VBzV5z6i1WS  | 19.79     | 36.46     | 52.08     |
+      | ziup5kvtCCR  | 23.08     | 48.72     | 56.41     |
+      | mean         | 24.01     | 41.30     | 50.77     |
+
+   6. 文本模态
+
+      | scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
+      |:------------:|:---------:|:---------:|:---------:|
+      | BAbdmeyTvMZ  | 15.15     | 33.33     | 45.45     |
+      | Dd4bFSTQ8gi  | 20        | 44        | 54.67     |
+      | mv2HUxq3B53  | 26.67     | 56        | 60        |
+      | Nfvxx8J5NCo  | 33.33     | 64.10     | 74.36     |
+      | QaLdnwvtxbs  | 40.74     | 88.89     | 96.30     |
+      | svBbv1Pavdk  | 28.07     | 36.84     | 45.61     |
+      | VBzV5z6i1WS  | 32.29     | 57.29     | 64.58     |
+      | ziup5kvtCCR  | 30.77     | 48.72     | 71.79     |
+      | mean         | 28.38     | 53.65     | 64.1      |
 
 <!-- 单模态多模态 1. 去掉vlm的我们的方法，纯评估graph： clip conway top 3 -> expand to 9 -> clip obj top 1 2.去掉文本模态：clip conway top 3 -> expand to 9 -> clip obj（only image） top 1 3. 去掉图像模态： clip conway top 3 -> expand to 9 -> clip obj（only text） top 1 5. conway 换成gt room clip room label top 3 -> clip obj top 1 6. 去掉图像模态（论文baseline）clip room label top 3 -> clip obj（only text） top 1 -->
 <!--实验设置：我们对room-object和conway-object两种不同的形式的graph, 在相同实验设置下做对比，实验结果如上表。首先，我们可以观察到，不论是room-object形式还是conway-object形式的场景graph，增加节点上的模态信息可以提升物体检索的准确率。其次，在相同实验配置下，conway-object形式的graph比room-object形式的graph检索的结果要好的多。这个实验充分证明了我们提出的多模态conway-obj场景图的优势。-->
@@ -300,6 +462,13 @@ The results are detailed in the table above.
 |       _    |                 |       |
 
 ## Appendix
+### Floor Free Map
+![maptrans](https://github.com/user-attachments/assets/72fa2b88-f56d-4d82-a1aa-2e52e1756cc5)
+
+<!--
+https://github.com/user-attachments/assets/76698ad4-1275-4d69-8722-f32298db99e0
+-->
+
 ### Instance Segmentation Model Selection
 
 We evaluate our instance segmentation on the Replica dataset, following the same evaluation protocol as described in Conceptgraph. The segmentation performance of current models is compared using two metrics: Mean Accuracy (mAcc) and Frequency-weighted Intersection over Union (F-mIoU).
