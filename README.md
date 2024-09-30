@@ -133,8 +133,10 @@ Visual target navigation is accomplished by reaching the target in query image f
 
    HM3D
 -->
-### [TODO: 艳平修改标题，加总起句介绍评测了什么+为什么评测（我们的优势）+实验结果+分析（加上conceptgraph）]1. Scene Graph 
+### [TODO: 艳平加总起句介绍评测了什么+为什么评测（我们的优势）+实验结果+分析（加上conceptgraph）] 1. Scene Graph Evaluation
 ？如何合理引入conceptgraph：常见构建方法
+本部分中评测了构建的场景图的准确性，包括物体类别及空间位置。我们与（同类型的）conceptgraph进行了比较，
+证实了1. node布局合理 2. 构图方法的有效性。
 
    #### Graph Location
    
@@ -146,8 +148,10 @@ Visual target navigation is accomplished by reaching the target in query image f
    |Dd4bFSTQ8gi | 344 / 392 | 53.49 |  0.2319 |
    |QaLdnwvtxbs& | 238 / 238| 42.72 | 0.2964 |
    |svBbv1Pavdk | 286 / 372 | 47.20 | 0.4720 |
-   | mean        |           | 50.14 | 0.3171|
+   | Mean        |           | 50.14 | 0.3171|
 
+<!--重复的instance可能会影响acc-->
+<!--mean的计算方式/根据episode-->
       
    #### Matterport3D
    
@@ -159,7 +163,7 @@ Visual target navigation is accomplished by reaching the target in query image f
    |TbHJrupSAjP | 421/641 | 60.57 | 0.2833 |
    |x8F5xyUWy9e | 93/276 | 41.92 | 0.2725 |
    |Z6MFQCViBuw | 152/562 | 58.55 | 0.3184 | 
-   | mean        |           | 52.91 | 0.2956|
+   | Mean        |           | 52.91 | 0.2956|
    
 
 The accuracy of the constructed scene graph is evaluated on the Matterport3D and HM3D datasets. GON represents the number of predicted objects in the scene graph, SON represents the number of objects in the real scene, and Accuracy indicates the percentage of correctly predicted objects in the scene graph. The evaluation details are as follows: the object categories and object coordinates in the scene graph are matched with the ground truth categories and coordinates. An object prediction in the scene graph is considered correct only if the category labels match and the distance between the object coordinates in the scene graph and the ground truth coordinates is less than a threshold (1 meter). Position Error represents the average distance error between the correctly predicted objects in the scene graph and the ground truth objects.
@@ -186,35 +190,33 @@ obj location acc: 对比ConceptGraph，hovsg?在gt环境下评测
 
 
 ### 2. Visual Target Navigation
+1. We compared our navigation results with the state-of-the-art IEVE method on our evaluation dataset. 相比它训练的模型，我们的0-shot方法表现具有竞争力
+2. 为了验证conway层在navigation任务中的实际效果，我们仅使用物体层执行Visual Target Navigation，指标下降6.1%，体现了conway层在任务中的重要作用
 
  <!--
-   conway整体方法（包括构图、检索）有效性
-
-   ​	1. with/without：在原本的基础上去掉conway检索=只对所有object列表做clip+vlm
-
-   > 2. room cluster：在原本的基础上把conway换成room（聚类得到，有图文），其他不变
-   -->
+ 检索时间
+ -->
 
 <div style="text-align: center;">
 
-|    Scene     | IEVE       |          | Object Only |     | Ours  |          |
-|:------------:|:----------:|:--------:|:-----------:|:---:|:-----:|:--------:|
-|              | sr(%)      | spl      | sr(%)       | spl | sr(%) | spl      |
-| Dd4bFSTQ8gi  | 33.6       | 0.0753   | 24.00       | 0.7360    | 41.33 |  0.6029  |
-| QaLdnwvtxbs  | 66.4       |  0.2681  | 48.15       |   0.5256  | 44.44 |  0.7471  |
-| VBzV5z6i1WS  | 44.8       | 0.1517   | 34.38       |   0.6562  | 48.96 |  0.6090  |
-| ziup5kvtCCR  | 45.6       |  0.1332  | 43.59       |  0.5086   | 41.03 |  0.5979  |
-| Nfvxx8J5NCo  | 35.2       |  0.1236  | 25.64       |  0.6327   | 47.37 |  0.6264  |
-| svBbv1Pavdk  | 57.6       |  0.2126  | 17.54       |  0.6283   | 42.42 |  0.6214  |
-| BAbdmeyTvMZ  | 60.8       |  0.3492  | 39.40       |   0.7001  | 42.70 | 0.6452   |
-| mv2HUxq3B53  | 37.6       |  0.1208  | 40.00       |  0.6248   | 22.67 |  0.6423  |
-| Mean         | 47.9       |  0.1823  | 34.09       |    0.6265  | 40.19 |  0.6365  |
-
+| Scene       | IEVE  |        | Ours  |        | w/o Conway nodes      |        |
+|-------------|-------|--------|-------|--------|-----------------------|--------|
+|             | sr(%) | spl    | sr(%) | spl    | sr(%)                 | spl    |
+| Dd4bFSTQ8gi | 33.6  | 0.0753 | 41.33 | 0.6029 | 24.00                 | 0.7360 |
+| QaLdnwvtxbs | 66.4  | 0.2681 | 44.44 | 0.7471 | 48.15                 | 0.5256 |
+| VBzV5z6i1WS | 44.8  | 0.1517 | 48.96 | 0.6090 | 34.38                 | 0.6562 |
+| ziup5kvtCCR | 45.6  | 0.1332 | 41.03 | 0.5979 | 43.59                 | 0.5086 |
+| Nfvxx8J5NCo | 35.2  | 0.1236 | 47.37 | 0.6264 | 25.64                 | 0.6327 |
+| svBbv1Pavdk | 57.6  | 0.2126 | 42.42 | 0.6214 | 17.54                 | 0.6283 |
+| BAbdmeyTvMZ | 60.8  | 0.3492 | 42.70 | 0.6452 | 39.40                 | 0.7001 |
+| mv2HUxq3B53 | 37.6  | 0.1208 | 22.67 | 0.6423 | 40.00                 | 0.6248 |
+| Mean        | 47.9  | 0.1823 | 40.19 | 0.6365 | 34.09                 | 0.6265 |
 </div>
 
 Initially, we built a object-baseline model that directly searches for the target instance from the list of all detected object instances in the scene. After identifying the target, a navigation graph is used to plan the path and complete the task. However, this flat retrieval approach, which focuses only on the object itself and ignores the surrounding context, limits accurate recognition of the target object to longer distances, reducing navigation success rates.
 
 We also compared our navigation results with the state-of-the-art IEVE method on our evaluation dataset. While IEVE slightly outperforms our method in navigation performance, it relies on a training process to optimize model parameters. In contrast, our method uses a training-free approach, aiming to evaluate its generalization ability by directly applying the model to new environments, offering a more flexible solution for real-world applications.
+
 > todo double check
 
 
@@ -224,7 +226,7 @@ We also compared our navigation results with the state-of-the-art IEVE method on
 We designed a model to eliminate uncertainties inherent in Large Visual and Language Models (LVLMs) to precisely evaluate the retrieval performance of our scene graph, basing all node selections just on CLIP similarity decisions. During the model's construction, we removed all LVLM-related modules.
 -->
 
-We removed all Large Visual and Language Models (LVLMs) related modules during model's construction for elimination inherented uncertainties in order to precisely evaluate the retrieval performance of our scene graph, basing all node selections just on CLIP similarity decisions. 
+For inherented uncertainties elimination, we removed all Large Visual and Language Models (LVLMs) related modules. in order to precisely evaluate the retrieval performance of our scene graph, basing all node selections just on CLIP similarity decisions. 
 
 > todo：和我们方法效果上的比较
 
@@ -238,97 +240,25 @@ We removed all Large Visual and Language Models (LVLMs) related modules during m
    -->
 <div style="text-align: center;">
 
-##### Conway Nodes Retrieval Accuracy
-
-| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) | acc(TOP7) |
-|--------------|-----------|-----------|-----------|-----------|
-| BAbdmeyTvMZ. | 48.48     | 57.58     | 66.67     | 72.73     |
-| Dd4bFSTQ8gi  | 77.33     | 89.33     | 93.33     | 97.33     |
-| mv2HUxq3B53  | 41.33     | 56        | 68        | 77.33     |
-| Nfvxx8J5NCo  | 46.15     | 61.53     | 87.18     | 87.18     |
-| QaLdnwvtxbs  | 77.78     | 88.89     | 88.89     | 96.30     |
-| svBbv1Pavdk  | 77.19     | 91.23     | 91.23     | 98.98     |
-| VBzV5z6i1WS  | 59.38     | 88.54     | 92.71     | 94.79     |
-| ziup5kvtCCR  | 71.79     | 87.18     | 89.74     | 92.31     |
-| **mean**     | 62.43     | 77.54     | 84.72     | 89.62     |
-
-##### Object Retrieval Accuracy
-
-1. TOP1 Selection of Conway Layer Retrieval
-
-| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-|--------------|-----------|-----------|-----------|
-| BAbdmeyTvMZ. | 15.15     | 18.18     | 18.18     |
-| Dd4bFSTQ8gi  | 25.33     | 57.33     | 65.33     |
-| mv2HUxq3B53  | 12        | 21.33     | 30.67     |
-| Nfvxx8J5NCo  | 20.51     | 33.33     | 33.33     |
-| QaLdnwvtxbs  | 51.85     | 62.96     | 66.67     |
-| svBbv1Pavdk  | 26.32     | 40.35     | 49.12     |
-| VBzV5z6i1WS  | 29.17     | 47.92     | 51.04     |
-| ziup5kvtCCR  | 35.90     | 64.10     | 66.67     |
-| mean         | 27.03     | 43.19     | 47.63     |
-
-
-2. TOP3 Selection of Conway Layer Retrieval
-
-| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-|--------------|-----------|-----------|-----------|
-| BAbdmeyTvMZ. | 15.15     | 24.24     | 33.33     |
-| Dd4bFSTQ8gi  | 33.33     | 58.67     | 68        |
-| mv2HUxq3B53  | 17.33     | 32        | 33.33     |
-| Nfvxx8J5NCo  | 15.38     | 35.90     | 46.15     |
-| QaLdnwvtxbs  | 55.56     | 70.37     | 74.07     |
-| svBbv1Pavdk  | 28.07     | 45.61     | 63.16     |
-| VBzV5z6i1WS  | 31.25     | 53.13     | 66.67     |
-| ziup5kvtCCR  | 35.90     | 69.23     | 76.92     |
-| mean         | 29        | 48.64     | 57.70     |
-
-3. TOP5 Selection of Conway Layer Retrieval
-
-| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-|--------------|-----------|-----------|-----------|
-| BAbdmeyTvMZ. | 18.18     | 27.27     | 45.45     |
-| Dd4bFSTQ8gi  | 36        | 58.67     | 66.67     |
-| mv2HUxq3B53  | 25.33     | 40        | 45.33     |
-| Nfvxx8J5NCo  | 23.08     | 51.28     | 61.54     |
-| QaLdnwvtxbs  | 51.85     | 74.07     | 74.07     |
-| svBbv1Pavdk  | 28.07     | 42.11     | 56.14     |
-| VBzV5z6i1WS  | 31.25     | 55.21     | 66.67     |
-| ziup5kvtCCR  | 35.90     | 66.67     | 71.79     |
-| mean         | 31.21     | 51.91     | 60.96     |
-
-4. TOP7 Selection of Conway Layer Retrieval
-
-| scene name  | acc(TOP1) | acc(TOP3) | acc(TOP5) |
-|--------------|-----------|-----------|-----------|
-| BAbdmeyTvMZ. | 15.15     | 30.30     | 48.48     |
-| Dd4bFSTQ8gi  | 36        | 58.67     | 66.67     |
-| mv2HUxq3B53  | 25.33     | 42.67     | 48        |
-| Nfvxx8J5NCo  | 15.38     | 48.72     | 61.54     |
-| QaLdnwvtxbs  | 59.26     | 77.78     | 85.19     |
-| svBbv1Pavdk  | 22.81     | 42.11     | 54.39     |
-| VBzV5z6i1WS  | 30.21     | 52.08     | 62.5      |
-| ziup5kvtCCR  | 35.90     | 66.67     | 74.36     |
-| mean         | 30.01     | 52.38     | 62.64     |
+##### Nodes Retrieval Accuracy
+| scene name   | TOP1       |         | acc(TOP3)  |         | acc(TOP5)  |         | acc(TOP7)  |         |
+|--------------|------------|---------|------------|---------|------------|---------|------------|---------|
+|              | conway acc | obj acc | conway acc | obj acc | conway acc | obj acc | conway acc | obj acc |
+| BAbdmeyTvMZ. | 48.48      | 15.15   | 57.58      | 15.15   | 66.67      | 18.18   | 72.73      | 15.15   |
+| Dd4bFSTQ8gi  | 77.33      | 25.33   | 89.33      | 33.33   | 93.33      | 36      | 97.33      | 36      |
+| mv2HUxq3B53  | 41.33      | 12      | 56         | 17.33   | 68         | 25.33   | 77.33      | 25.33   |
+| Nfvxx8J5NCo  | 46.15      | 20.51   | 61.53      | 15.38   | 87.18      | 23.08   | 87.18      | 15.38   |
+| QaLdnwvtxbs  | 77.78      | 51.85   | 88.89      | 55.56   | 88.89      | 51.85   | 96.30      | 59.26   |
+| svBbv1Pavdk  | 77.19      | 26.32   | 91.23      | 28.07   | 91.23      | 28.07   | 98.98      | 22.81   |
+| VBzV5z6i1WS  | 59.38      | 29.17   | 88.54      | 31.25   | 92.71      | 31.25   | 94.79      | 30.21   |
+| ziup5kvtCCR  | 71.79      | 35.90   | 87.18      | 35.90   | 89.74      | 35.90   | 92.31      | 35.90   |
+| **Mean**     | 62.43      | 27.03   | 77.54      | 29      | 84.72      | 31.21   | 89.62      | 30.01   |
 
 </div>	
 
-   <!-- 实验设置：本研究设计了一种模型，该模型排除了大型视觉语言模型（LVLM）中的不确定性因素，所有节点的选择均基于CLIP相似度进行决策。在构建模型时，我们移除了与所有LVAM相关的模块。在Conway节点的选择上，我们采用了一种策略：将所有候选Conway节点下挂载的物体节点的CLIP特征与目标物体图片的CLIP特征进行相似度匹配，选择最相似的物体节点，将其连接的Conway节点作为导航点以规划路径。实验结果如上表所示。
-   分析结果表明，当k值设定为3或5时，可以较好地平衡Conway和物体的检索正确率。然而，当k值增至5时，虽然物体准确率的提升有限，但导航准确率却有所下降。此外，考虑到我们的方法会调用LVLM，k值的增大会导致输入到视觉语言模型的token数量增加67%。综合考虑，我们选择k值为3作为最优解-->
 
-<!--
-
-> For the selection of Conway nodes, we adopted a strategy where we matched the CLIP features of all candidate Conway nodes' attached object nodes with the CLIP features of the target object image to find the most similar object node. The Conway node connected to this object node was then used as the navigation point to plan the path. The experimental results are shown in the table above.
->
-> Analysis of the results indicates that setting the k value to 3 or 5 can achieve a good balance between the retrieval accuracy of Conway and object nodes. However, when the k value is increased to 5, although the improvement in object accuracy is limited, the navigation accuracy decreases. Moreover, considering that our method invokes LVLMs, an increase in the k value leads to a 67% increase in the number of tokens input to the visual language model. Taking all factors into account, we have chosen a k value of 3 as the optimal solution.
-
-For Conway nodes selection, we used a strategy where the CLIP features of candidate Conway nodes' attached object nodes were matched with the CLIP features of the target object image to identify the most similar object node. The Conway node linked to this object node was then chosen as the navigation point for path planning. The experimental results are shown in the table above.
-
--->
-
-在检索过程中，第一轮conway node检索的节点候选数量会影响xxxxxxxxx
-Result analysis indicates that setting the k-value to 3 or 5 achieves a good balance between retrieval accuracy for Conway and object nodes. However, when the k-value set up to 5, while the object accuracy sees limited improvement, navigation accuracy also declines. 
-Additionally, since our method invokes LVLMs, increasing the k-value leads to a 67% rise in the number of tokens input to the visual language model. 
+在检索过程中，第一轮conway node检索的候选节点数量会影响后续的候选物体数量，我们对第一轮选取的节点数量进行了评测，随着k-value上升，候选conway node增加，其中包含正确节点的概率也随之上升，as Conway Nodes Retrieval Accuracy表格。
+Result analysis indicates that setting the k-value to 3 or 5 achieves a good balance between retrieval accuracy for Conway and object nodes. However, when the k-value set up to 5, while the object accuracy sees limited improvement, increasing the k-value leads to a 67% rise in the number of tokens input to the visual language model. 
 
 Considering all factors, we have chosen a k-value of 3 as the optimal solution.
 
