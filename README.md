@@ -39,13 +39,14 @@ We evaluated and analyzed our approach from several aspects: the accuracy of gra
 证实了1. node布局合理 2. 构图方法的有效性。
    1. HM3D
 
-   | Scenes | GON/SON | Accuracy(%) | Position Error(m) |
-   |:--------:|:---------:|:-------------:|:-------------------:|
-   |BAbdmeyTvMZ | 63/370 | 57.14 | 0.2682 |
-   |Dd4bFSTQ8gi | 344 / 392 | 53.49 |  0.2319 |
-   |QaLdnwvtxbs& | 238 / 238| 42.72 | 0.2964 |
-   |svBbv1Pavdk | 286 / 372 | 47.20 | 0.4720 |
-   | Mean        |           | 50.14 | 0.3171|
+|              |           | Ours        |                   |           | ConceptGraph |                   |
+|--------------|-----------|-------------|-------------------|-----------|--------------|-------------------|
+| Scenes       | GON/SON   | Accuracy(%) | Position Error(m) | GON/SON   | Accuracy(%)  | Position Error(m) |
+| BAbdmeyTvMZ  | 63/370    | 57.14       | 0.2682            | 195/370   | 32.31        | 0.2129            |
+| Dd4bFSTQ8gi  | 344 / 392 | 53.49       | 0.2319            | 160 / 392 | 48.13        | 0.1249            |
+| QaLdnwvtxbs& | 238 / 238 | 42.72       | 0.2964            | 101 / 238 | 41.58        | 0.1336            |
+| svBbv1Pavdk  | 286 / 372 | 47.20       | 0.4720            | 126 / 372 | 34.13        | 0.1920            |
+| Mean         |           | 50.14       | 0.3171            |           | 39.04        | 0.1659            |
 
 <!--重复的instance可能会影响acc-->
 <!--mean的计算方式/根据episode-->
@@ -65,8 +66,7 @@ We evaluated and analyzed our approach from several aspects: the accuracy of gra
 
 The accuracy of the constructed scene graph is evaluated on the Matterport3D and HM3D datasets. GON represents the number of predicted objects in the scene graph, SON represents the number of objects in the real scene, and Accuracy indicates the percentage of correctly predicted objects in the scene graph. The evaluation details are as follows: the object categories and object coordinates in the scene graph are matched with the ground truth categories and coordinates. An object prediction in the scene graph is considered correct only if the category labels match and the distance between the object coordinates in the scene graph and the ground truth coordinates is less than a threshold (1 meter). Position Error represents the average distance error between the correctly predicted objects in the scene graph and the ground truth objects.
    
-To further demonstrate the accuracy of our proposed CTSG in constructing scene graphs, we include a comparative experiment with ConceptGraph. The experimental results are presented in the table.
-
+We evaluate the proposed CTSG method on both the HM3D and Matterport3D datasets. In both datasets, the object retrieval accuracy exceeds 50%, and the average position error remains around 0.3 meters. When compared to ConceptGraph on the HM3D dataset, our GON/SON and accuracy metrics significantly surpass ConceptGraph in almost all scenes. Notably, in the Dd4bFSTQ8gi scene, we observe that the number of retrieved objects and accuracy exceed ConceptGraph by 184 and 5.36%, respectively, demonstrating the effectiveness of the proposed CTSG method.
 
 ### 2. Visual Target Navigation
 
