@@ -13,8 +13,12 @@ For visual target navigation tasks, a suitable environment representation plays 
 -->
 
 ## Video
+
+<div style="text-align: center;">
+   
 https://github.com/user-attachments/assets/637966af-dfbb-458e-bb6a-15ddcbc1a3d8
 
+</div>
 
 ## Approach
 
