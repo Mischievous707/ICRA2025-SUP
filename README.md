@@ -264,8 +264,9 @@ Considering all factors, we have chosen a k-value of 3 as the optimal solution.
 
 
 
-   #### 2. The Effectiveness of Multimodal Information in Scene Graphs
+   #### 2. The Effectiveness of Conway Information and Multimodal Information in Scene Graphs
    
+   ##### Object Nodes Retrieval Accuracy
 |             |             | Room-Object |           |             | Conway-Object |           |
 |-------------|-------------|-------------|-----------|-------------|---------------|-----------|
 | Scene Names | Multi-Modal | Image Only  | Text Only | Multi-Modal | Image Only    | Text Only |
@@ -277,28 +278,18 @@ Considering all factors, we have chosen a k-value of 3 as the optimal solution.
 | svBbv1Pavdk | 22.81       | 15.79       | 28.07     | 28.07       | 14.04         | 28.07     |
 | VBzV5z6i1WS | 22.91       | 19.79       | 32.29     | 31.25       | 30.21         | 21.88     |
 | ziup5kvtCCR | 38.46       | 23.08       | 30.77     | 35.90       | 43.59         | 58.97     |
-| Mean        | 30.78       | 24.01       | 28.38     | 29          | 26.90         | 32.65     |
+| **Mean**    | 30.78       | 24.01       | 28.38     | 29          | 26.90         | 32.65     |
 
 
-<!-- 单模态多模态 1. 去掉vlm的我们的方法，纯评估graph： clip conway top 3 -> expand to 9 -> clip obj top 1 2.去掉文本模态：clip conway top 3 -> expand to 9 -> clip obj（only image） top 1 3. 去掉图像模态： clip conway top 3 -> expand to 9 -> clip obj（only text） top 1 5. conway 换成gt room clip room label top 3 -> clip obj top 1 6. 去掉图像模态（论文baseline）clip room label top 3 -> clip obj（only text） top 1 -->
-<!--实验设置：我们对room-object和conway-object两种不同的形式的graph, 在相同实验设置下做对比，实验结果如上表。首先，我们可以观察到，不论是room-object形式还是conway-object形式的场景graph，增加节点上的模态信息可以提升物体检索的准确率。其次，在相同实验配置下，conway-object形式的graph比room-object形式的graph检索的结果要好的多。这个实验充分证明了我们提出的多模态conway-obj场景图的优势。-->
-<!--
-> We compared the performance of two different graph structures—the room-object and conway-object graphs—under uniform experimental conditions. The results of the experiment are detailed in the aforementioned table. Preliminary observations indicate that regardless of whether the room-object or conway-object graph form is utilized, augmenting the nodes with multimodal information significantly enhances the accuracy of object retrieval.
->
-> Further analysis revealed that under identical experimental configurations, the conway-object graph outperformed the room-object graph in retrieval performance. This finding fully confirms the significant advantages of the multimodal conway-object scene graph we proposed in retrieval tasks.
--->
-
-We compared the performance of two different graph structures—the room-object graph and the Conway-object graph—under consistent experimental conditions. 
-
+We compared the performance of two different graph structures—the room-object graph and the Conway-object graph—under consistent experimental conditions. 对room-object结构我们把检测出的object层连接到groundtruth的房间节点中，首先根据节点标签筛选room节点，由此观察conway信息的作用。同时，我们对图节点的模态信息进行消融实验，探索不同模态信息的利用效果。
 The results are detailed in the table above.
+可以看出基于我们的conway层的图在单模态检索中普遍优于传统的房间-物体结构，room结构中，object多模态信息融合表现出更好的效果。但对Conway-object结构，多模态信息相对处理稍弱，与我们的实际模型之间（40.19%）存在较大差异，对原因进行分析，主要差异在于conway层的信息融合。conway层图像包含复杂全景图和复杂文本信息的处理。我们实际采用的方法中应用了LVLM进行推理分析，但此处仅采用了基于CLIP的特征提取，提取效果难以保证。即使在此种不利情况下，相比确定正确的room信息，conway层仍然表现出明显优势，再次证明了我们提出方法的可行性。
 
->todo: 实验结果分析
+
          
-<!--### 4. 多任务task-->
+<!--### 4. 多任务task--> 
 
-      
-
-
+<!--
 ## 参数表<a name="section-heading"></a>
 
 | Subsystem | Hyperparameters | Value |
@@ -306,6 +297,7 @@ The results are detailed in the table above.
 |     _      |                |       |
 |    _       |                 |       |
 |       _    |                 |       |
+-->
 
 ## Appendix
 ### Floor Free Map
