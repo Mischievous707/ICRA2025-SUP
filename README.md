@@ -20,8 +20,6 @@ https://github.com/user-attachments/assets/637966af-dfbb-458e-bb6a-15ddcbc1a3d8
 
 <img src="/img/pipeline.png" />
 
-> todo：有需要再补充
-
 **CTSG** is a dual-layer multi-modal scene graph. The Conway layer contains navigable waypoints called Conway nodes, which provide contextual information and multi-modal attributes as images and descriptions. 
 The connections between Conway nodes represent their navigability. 
 The object layer includes object nodes, with attributes like individual descriptions and object images, and the connections between Conway and object nodes reflect spatial relationships.
@@ -38,7 +36,7 @@ We evaluated and analyzed our approach from several aspects: the accuracy of gra
 ？如何合理引入conceptgraph：常见构建方法
 本部分中评测了构建的场景图的准确性，包括物体类别及空间位置。我们与（同类型的）conceptgraph进行了比较，
 证实了1. node布局合理 2. 构图方法的有效性。
-   #### HM3D
+   1. HM3D
 
    | Scenes | GON/SON | Accuracy(%) | Position Error(m) |
    |:--------:|:---------:|:-------------:|:-------------------:|
@@ -51,7 +49,7 @@ We evaluated and analyzed our approach from several aspects: the accuracy of gra
 <!--重复的instance可能会影响acc-->
 <!--mean的计算方式/根据episode-->
       
-   #### Matterport3D
+  2. Matterport3D
    
    | Scenes | GON/SON | Accuracy(%) | Position Error(m) |
    |:--------:|:---------:|:-------------:|:-------------------:|
@@ -70,7 +68,11 @@ To further demonstrate the accuracy of our proposed CSTG in constructing scene g
 
 
 ### 2. Visual Target Navigation
-We compared our navigation results with the state-of-the-art IEVE method on our evaluation dataset. While IEVE relies on a training process to optimize model parameters, our method uses a training-free approach, aiming to evaluate its generalization ability by directly applying the model to new environments, offering a more flexible solution for real-world applications, also demonstrating competitive performance.
+
+We compared our navigation results with the state-of-the-art IEVE method on our evaluation dataset. 
+
+While IEVE relies on a training process to optimize model parameters, our method uses a training-free approach, aiming to evaluate its generalization ability by directly applying the model to new environments, offering a more flexible solution for real-world applications, also demonstrating competitive performance.
+
 To verify the practical impact of the Conway layer in the navigation task, we performed Visual Target Navigation using only the object layer, resulting in a 6.1% drop in performance, highlighting the critical role of the Conway layer in the task.
  <!--
  检索时间
@@ -100,7 +102,7 @@ To verify the practical impact of the Conway layer in the navigation task, we pe
 To eliminate inherent uncertainties, we removed all modules related to Large Visual and Language Models (LVLMs). This allowed us to accurately assess the retrieval performance of our scene graph, with all node selections based solely on CLIP similarity decisions.
 
 
-   #### 1. The Effectiveness of Top-k Selection on Conway Layer Retrieval
+1. The Effectiveness of Top-k Selection on Conway Layer Retrieval
 
 <div style="text-align: center;">
 
@@ -128,9 +130,9 @@ Taking all factors into account, we have selected a k-value of 3 as the optimal 
 
 
 
-   #### 2. The Effectiveness of Conway Information and Multimodal Information in Scene Graphs
+2. The Effectiveness of Conway Information and Multimodal Information in Scene Graphs
    
-   ##### Object Nodes Retrieval Accuracy
+**Object Nodes Retrieval Accuracy**
 |             |             | Room-Object |           |             | Conway-Object |           |
 |-------------|-------------|-------------|-----------|-------------|---------------|-----------|
 | Scene Names | Multi-Modal | Image Only  | Text Only | Multi-Modal | Image Only    | Text Only |
@@ -148,24 +150,12 @@ Taking all factors into account, we have selected a k-value of 3 as the optimal 
 We compared the performance of two different graph structures—the room-object graph and the Conway-object graph—under consistent experimental conditions. For the room-object structure, we connected detected object layers to ground truth room nodes, filtering room nodes based on their labels to observe the impact of Conway information. We also conducted ablation experiments on the modal information of graph nodes to explore the effectiveness of different modalities.
 
 The results are shown in the table above. 
+It is evident that our Conway-based graph generally outperforms the traditional room-object structure in single-modality retrieval. In the room-object structure, the fusion of multimodal object information yielded better results. 
 
-It is evident that our Conway-based graph generally outperforms the traditional room-object structure in single-modality retrieval. In the room-object structure, the fusion of multimodal object information yielded better results. However, in the Conway-object structure, multimodal information processing was relatively weaker, with a significant difference (40.19%) compared to our full model. Upon analysis, the main discrepancy lies in the integration of information in the Conway layer. The Conway layer handles complex panoramic images and rich textual information. In our actual approach, we used LVLM for reasoning, whereas in this comparison, we relied only on CLIP-based feature extraction, which may have compromised performance. 
+However, in the Conway-object structure, multimodal information processing was relatively weaker, with a significant difference (40.19%) compared to our full model. Upon analysis, the main discrepancy lies in the integration of information in the Conway layer. The Conway layer handles complex panoramic images and rich textual information. In our actual approach, we used LVLM for reasoning, whereas in this comparison, we relied only on CLIP-based feature extraction, which may have compromised performance. 
 
 Despite these limitations, the Conway layer still showed a clear advantage over determining the correct room information, further demonstrating the feasibility of our proposed method.
 
-
-         
-<!--### 4. 多任务task--> 
-
-<!--
-## 参数表<a name="section-heading"></a>
-
-| Subsystem | Hyperparameters | Value |
-| --------- | --------------- | ----- |
-|     _      |                |       |
-|    _       |                 |       |
-|       _    |                 |       |
--->
 
 ## Appendix
 ### Floor Free Map
@@ -189,10 +179,11 @@ We evaluate our instance segmentation on the Replica dataset, following the same
 | RAM + SAM   |           | 34.19 | 37.27  |
 | RAM + SAM2  |           | 35.80 | 38.35  |
 
-> todo:重写分析
+We present various semantic segmentation results on the Replica dataset. 
 
-> we report various semantic segmentation results on Replica dataset. The combination of the RAM and SAM series demonstrates a significant advantage over MaskCLIP and Mask2former. Although its performance metrics are slightly lower than those of fine-tuned models, the open-vocabulary segmentation model demonstrates a clear advantage in scene transferability. There is no significant performance difference between the SAM and SAM2 models, but SAM is more widely-used and adaptable to other models. Therefore, we selected the RAM+SAM combination for object segmentation in scenes.
+The combination of the RAM and SAM series shows a significant advantage over MaskCLIP and Mask2Former. While its performance metrics are slightly lower than those of fine-tuned models, the open-vocabulary segmentation model demonstrates a clear edge in scene transferability. 
 
+There is no notable performance difference between the SAM and SAM2 models, but SAM is more widely used and adaptable to other models. Therefore, we chose the RAM+SAM combination for object segmentation in scenes.
 
 
 
