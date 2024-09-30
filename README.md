@@ -33,10 +33,8 @@ We conduct Conway-level and object-level retrieval, coupled with a backtracking 
 We evaluated and analyzed our approach from several aspects: the accuracy of graph construction, the practical effectiveness of visual target navigation, and the role of graph information in retrieval tasks.
 <!--[parameter_list](#section-heading)-->
 
-### 1. Scene Graph Evaluation [TODO: 加总起句介绍评测了什么+为什么评测（我们的优势）+实验结果+分析（加上conceptgraph）] 
-？如何合理引入conceptgraph：常见构建方法
-本部分中评测了构建的场景图的准确性，包括物体类别及空间位置。我们与（同类型的）conceptgraph进行了比较，
-证实了1. node布局合理 2. 构图方法的有效性。
+### 1. Scene Graph Evaluation
+
    1. HM3D
 
 |              |           | Ours        |                   |           | ConceptGraph |                   |
@@ -105,9 +103,9 @@ To eliminate inherent uncertainties, we removed all modules related to Large Vis
 
 **1. The Effectiveness of Top-k Selection on Conway Layer Retrieval**
 
-<div style="text-align: center;">
 
-** Nodes Retrieval Accuracy**
+**Nodes Retrieval Accuracy**
+
 | scene name   | TOP1       |         | TOP3  |         | TOP5  |         | TOP7  |         |
 |--------------|------------|---------|------------|---------|------------|---------|------------|---------|
 |              | Conway acc | obj acc | Conway acc | obj acc | Conway acc | obj acc | Conway acc | obj acc |
@@ -121,7 +119,7 @@ To eliminate inherent uncertainties, we removed all modules related to Large Vis
 | ziup5kvtCCR  | 71.79      | 35.90   | 87.18      | 35.90   | 89.74      | 35.90   | 92.31      | 35.90   |
 | **Mean**     | 62.43      | 27.03   | 77.54      | 29      | 84.72      | 31.21   | 89.62      | 30.01   |
 
-</div>	
+
 
 During the retrieval process, the number of candidate nodes in the first round of Conway node retrieval affects the subsequent pool of candidate objects. We evaluated the impact of the number **TopK** of selected nodes in the first round. As the k-value increases, the number of candidate Conway nodes rises, and the likelihood of including the correct node also increases, as shown in the Conway Nodes Retrieval Accuracy table.
 
@@ -134,6 +132,7 @@ Taking all factors into account, we have selected a k-value of 3 as the optimal 
 **2. The Effectiveness of Conway Information and Multimodal Information in Scene Graphs**
    
 **Object Nodes Retrieval Accuracy**
+
 |             |             | Room-Object |           |             | Conway-Object |           |
 |-------------|-------------|-------------|-----------|-------------|---------------|-----------|
 | Scene Names | Multi-Modal | Image Only  | Text Only | Multi-Modal | Image Only    | Text Only |
