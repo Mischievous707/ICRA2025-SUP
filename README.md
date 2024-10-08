@@ -19,7 +19,8 @@ This repository is the official implementation of the paper: **CTSG: Context and
 
 ## Approach
 
-<img src="/img/pipeline.png" />
+<!--<img src="/img/pipeline.png" />-->
+![pipeline](https://github.com/user-attachments/assets/c650b5c0-fc63-4b4c-929f-323cab394ed3)
 
 **CTSG** is a dual-layer multi-modal scene graph. The Conway layer contains navigable waypoints called Conway nodes, which provide contextual information and multi-modal attributes as images and descriptions. 
 The connections between Conway nodes represent their navigability. 
