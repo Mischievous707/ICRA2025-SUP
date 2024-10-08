@@ -4,16 +4,16 @@ This repository is the official implementation of the paper: **CTSG: Context and
 ![微信截图_20240930180019](https://github.com/user-attachments/assets/fdb320d6-0045-49b4-81e6-8861ee672d3c)
 
 
-https://github.com/user-attachments/assets/ff1d11a1-2961-4fb1-8d08-ae9c999f9cda
+[real video](https://github.com/user-attachments/assets/ff1d11a1-2961-4fb1-8d08-ae9c999f9cda)
 
-https://github.com/user-attachments/assets/20362768-7054-4c69-925a-1913e1fb4b35
+[simulator video](https://github.com/user-attachments/assets/20362768-7054-4c69-925a-1913e1fb4b35)
 
 
 ## Video
 
 <div style="text-align: center;">
    
-https://github.com/user-attachments/assets/bd9a4780-92d7-476a-a52f-149c122b2677
+[main video](https://github.com/user-attachments/assets/bd9a4780-92d7-476a-a52f-149c122b2677)
 
 </div>
 
